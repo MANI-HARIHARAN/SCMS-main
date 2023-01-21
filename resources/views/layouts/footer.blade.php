@@ -19,3 +19,18 @@
 <!-- Custom js for this page -->
 <script src="assets/js/dashboard.js"></script>
 <script src="assets/js/todolist.js"></script>
+
+<style>
+    .required:after {
+    content:" *";
+    color: red;
+  }
+</style>
+
+<script>
+    $("document").ready(function(){
+    setTimeout(function(){
+       $("div.alert").remove();
+    }, 2000 ); // 5 secs
+    });
+</script>

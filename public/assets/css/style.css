@@ -3464,6 +3464,28 @@ progress {
   color: #fff;
   border-color: #373b3e; }
 
+.table-paginate {
+  --bs-table-bg: #d1cad9;
+  --bs-table-striped-bg: #d1cad9;
+  --bs-table-striped-color: #67666e;
+  --bs-table-active-bg: #d1cad9;
+  --bs-table-active-color: #67666e;
+  --bs-table-hover-bg: #d1cad9;
+  --bs-table-hover-color: #67666e;
+  color: #67666e;
+  border-color: #d1cad9; }
+
+.table-head {
+  --bs-table-bg: #cb9ff5;
+  --bs-table-striped-bg: #cb9ff5;
+  --bs-table-striped-color: #67666e;
+  --bs-table-active-bg: #cb9ff5;
+  --bs-table-active-color: #67666e;
+  --bs-table-hover-bg: #cb9ff5;
+  --bs-table-hover-color: #67666e;
+  color: #67666e;
+  border-color: #cb9ff5; }
+
 .table-responsive {
   overflow-x: auto;
   -webkit-overflow-scrolling: touch; }
