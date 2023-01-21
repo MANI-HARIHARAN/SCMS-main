@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\brands;
 use Illuminate\Http\Request;
+use DB;
 
 class BrandsController extends Controller
 {
@@ -14,7 +15,9 @@ class BrandsController extends Controller
      */
     public function index()
     {
-        //
+        $brands = brands::all();
+        return view('Brands.brands', compact('brands'));
+       
     }
 
     /**
@@ -24,13 +27,7 @@ class BrandsController extends Controller
      */
     public function create()
     {
-        $request->validate([
-            'name' =>'required',
-        ]);
-        $brands = new brands;
-        $brands->name = $request->name;
-        $brands->save();
-        return redirect()->route('brands.index');
+        return view('Brands.addbrands');
     }
 
     /**
@@ -41,7 +38,13 @@ class BrandsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' =>'required',
+        ]);
+        $brands = new brands;
+        $brands->name = $request->name;
+        $brands->save();
+        return redirect()->route('brands.index')->with('message','Brands added successfully');
     }
 
     /**
@@ -50,10 +53,12 @@ class BrandsController extends Controller
      * @param  \App\Models\brands  $brands
      * @return \Illuminate\Http\Response
      */
-    public function show(brands $brands)
-    {
-        //
-    }
+    public function show($id)
+{
+    // $brand = brands::find($id);
+    // return view('Brands.show', compact('brand'));
+}
+
 
     /**
      * Show the form for editing the specified resource.
@@ -61,9 +66,10 @@ class BrandsController extends Controller
      * @param  \App\Models\brands  $brands
      * @return \Illuminate\Http\Response
      */
-    public function edit(brands $brands)
+    public function edit( $id )
     {
-        //
+        $brands = brands::find($id);
+        return view('Brands.edit', compact('brands'));
     }
 
     /**
@@ -73,9 +79,13 @@ class BrandsController extends Controller
      * @param  \App\Models\brands  $brands
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, brands $brands)
+    public function update(Request $request, $id)
     {
-        //
+        $brands = brands::find($id);
+        $brands->name = $request->name;   
+         $brands->save();
+         return redirect('/brands');
+        
     }
 
     /**
@@ -84,8 +94,11 @@ class BrandsController extends Controller
      * @param  \App\Models\brands  $brands
      * @return \Illuminate\Http\Response
      */
-    public function destroy(brands $brands)
+    public function destroy($id)
     {
-        //
+        $brands = brands::find($id);
+        $brands->delete();
+        return redirect('/brands');
     }
+        
 }

@@ -22,3 +22,10 @@ Route::get('/userlist', function () {
 Route::get('/adduser', function () {
     return view('users.add');
 });
+
+Route::get('/brands', [App\Http\Controllers\BrandsController::class,'index'])->name('brands.index');
+Route::get('/brands_add', [App\Http\Controllers\BrandsController::class,'create'])->name('brands.create');
+Route::post('/brands/add/store', [App\Http\Controllers\BrandsController::class,'store'])->name('brands.store');    
+Route::get('/brands_edit{id}', [App\Http\Controllers\BrandsController::class,'edit'])->name('brands.edit');
+Route::put('/brands_update/{id}', [App\Http\Controllers\BrandsController::class,'update'])->name('brands.update');    
+Route::get('/brands_delete/{id}', [App\Http\Controllers\BrandsController::class,'destroy'])->name('brands.delete');    
