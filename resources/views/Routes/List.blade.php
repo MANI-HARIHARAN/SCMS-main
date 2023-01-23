@@ -12,18 +12,18 @@
                 <h3 class="page-title">
                     <span class="page-title-icon bg-gradient-primary text-white me-2">
                     <i class="mdi mdi-account"></i>
-                    </span> User List
+                    </span> Route List
                 </h3>
                 <div  style="float:right">
-                    <a class="nav-link" href="/adduser"> 
+                    <a class="nav-link" href="/addroute"> 
                     <span class="page-title-icon bg-primary text-white me-2">
                     <i class="mdi mdi-plus-box mdi-icon"></i>
-                    </span>Add User</a>
+                    </span>Add Route</a>
                 </div>
                 <nav aria-label="breadcrumb">
                     <ul class="breadcrumb">
                     <li class="breadcrumb-item active" aria-current="page">
-                        <span></span>Userlist <i class="mdi mdi-alert-circle-outline icon-sm text-primary align-middle"></i>
+                        <span></span>Routelist <i class="mdi mdi-alert-circle-outline icon-sm text-primary align-middle"></i>
                     </li>
                     </ul>
                 </nav>
@@ -45,15 +45,13 @@
             <div class="col-lg-12 grid-margin stretch-card">
                 <div class="card">
                   <div class="card-body">
-                    <h4 class="card-title">Striped Table</h4>
+                    <h4 class="card-title">Route Table</h4>
                     </p>
                     <table class="table table-striped table-bordered">
                       <thead>
                         <tr class="table-paginate">
                           <th> S.No</th>
-                          <th> Name</th>
-                          <th> Role </th>
-                          <th> Username </th>
+                          <th> Route Name</th>
                           <th> Action </th>
                         </tr>
                       </thead>
@@ -61,20 +59,18 @@
                       @foreach($data as $key=>$value)
                         <tr>
                           <td>{{$key+1}}</td>
-                          <td>{{$value->name}}</td>
-                          <td>{{$value->role}}</td>
-                          <td>{{$value->username}}</td>
+                          <td>{{$value->route_name}}</td>
                           <td>
-                            <a href="/userupdate{{$value->id}}" class="mdi mdi-lead-pencil"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                            <a class="mdi mdi-delete" data-href="/userdelete/{{$value->id}}"  data-toggle="modal" data-target="#confirm-delete"></a>
+                            <a href="/routeupdate{{$value->id}}" class="mdi mdi-lead-pencil"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <a class="mdi mdi-delete" data-href="/routedelete/{{$value->id}}"  data-toggle="modal" data-target="#confirm-delete"></a>
                           </td>      
                         </tr>
                       @endforeach
                       </tbody>
                       <tr>
-                      <td class="table-paginate" colspan="3">Showing{{$data->firstItem() }} {{ $data->lastItem() }} of {{ $data->total() }}</td>
+                      <td class="table-paginate" colspan="2">Showing{{$data->firstItem() }} {{ $data->lastItem() }} of {{ $data->total() }}</td>
                       <td class="table-paginate" colspan="2">{{ $data->links() }}</td>
-                      </tr>
+                      </tr> 
                     </table>
                   </div>
                 </div>
@@ -96,7 +92,7 @@
               </div>
               <div class="modal-footer">
                   <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-                  <a class="btn btn-danger btn-ok" href="/userdelete/{{$value->id}}" >Delete</a>
+                  <a class="btn btn-danger btn-ok" href="/routedelete/{{$value->id}}">Delete</a>
               </div>
           </div>
       </div>
