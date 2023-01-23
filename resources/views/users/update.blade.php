@@ -28,7 +28,7 @@
                     <div class="card-body">
                         <h4 class="card-title">Update User</h4>
                         @foreach($users as $user)
-                        <form class="form-sample" method="POST" action="userlist" >
+                        <form class="form-sample" method="POST" action="userupdate" >
                         @csrf
                             <!-- <p class="card-description"> Personal info </p> -->
                             <div class="row">
@@ -36,7 +36,8 @@
                                 <div class="form-group row">
                                     <label class="col-sm-3 col-form-label required">Name</label>
                                     <div class="col-sm-9">
-                                        <input type="text" class="form-control"  placeholder="Name" name="name" value="{{ $user->name }}" required>
+                                        <input type="text" class="form-control"  placeholder="Name" name="edit_name" value="{{$user->name}}" required>
+                                        <input type="hidden" class="form-control"  placeholder="Name" name="id" value="{{$user->id}}" required>
                                     </div>
                                 </div>
                                 </div>
@@ -44,7 +45,7 @@
                                 <div class="form-group row">
                                     <label class="col-sm-3 col-form-label required">Role</label>
                                     <div class="col-sm-9">
-                                        <select class="form-control" name="user_role"  required> 
+                                        <select class="form-control" name="edit_role"  required> 
                                             <option value="{{ $user->role }}">{{ $user->role }}</option>
                                             <option value="Manager">Manager</option>
                                             <option value="Salesman">Salesman</option>
@@ -59,7 +60,7 @@
                                 <div class="form-group row">
                                     <label class="col-sm-3 col-form-label required">User Id</label>
                                     <div class="col-sm-9">
-                                        <input type="text" class="form-control" placeholder="@" name="username" value="{{ $user->username }}" required/>
+                                        <input type="text" class="form-control" placeholder="@" name="edit_username" value="{{ $user->username }}" required/>
                                     </div>
                                 </div>
                                 </div>
@@ -67,7 +68,7 @@
                                 <div class="form-group row">
                                     <label class="col-sm-3 col-form-label required">Password</label>
                                     <div class="col-sm-9">
-                                    <input type="password" class="form-control" placeholder="****" name="password" value="{{ $user->password }}" required/>
+                                    <input type="password" class="form-control" placeholder="****" name="edit_password" value="{{ $user->password }}" required/>
                                     </div>
                                 </div>
                                 </div>

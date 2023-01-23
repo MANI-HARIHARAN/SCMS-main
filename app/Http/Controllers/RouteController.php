@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\admin;
+use App\Models\route;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
-class AdminController extends Controller
+class RouteController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -36,69 +36,63 @@ class AdminController extends Controller
      */
     public function store(Request $request)
     {
-        $userData = new admin();
-        $userData->name = ucwords($request->name);
-        $userData->role = $request->user_role;
-        $userData->username = $request->username;
-        $userData->password = $request->password;
+        $userData = new route();
+        $userData->route_name = ucwords($request->route_name);
         $userData->save();
-        return redirect('/userlist')->with('useradd', 'User Added Successfully');
+        return redirect('/routelist')->with('useradd', 'User Added Successfully');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\admin  $admin
+     * @param  \App\Models\route  $route
      * @return \Illuminate\Http\Response
      */
-    public function show(admin $admin)
+    public function show(route $route)
     {
-        $data=admin::paginate(10);
-        return view('Users.List',['data'=>$data]);
+        $data=route::paginate(10);
+        return view('Routes.List',['data'=>$data]);
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\admin  $admin
+     * @param  \App\Models\route  $route
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
-    {          
-        $users=DB::table('admins')->where('id',$id)->get();
-        return view('Users.Update',['users'=>$users]);
+    {
+        $users=DB::table('routes')->where('id',$id)->get();
+        return view('Routes.Update',['users'=>$users]);
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\admin  $admin
+     * @param  \App\Models\route  $route
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request)
     {
         $id = $request->input('id');
-        admin::where('id', $id)
+        route::where('id', $id)
          ->update(
             [
-               'name' => ucwords($request->input('edit_name')),
-               'role' => $request->input('edit_role'),
-               'username' => $request->input('edit_username'),
-               'password' => $request->input('edit_password'), 
+                'route_name'=> ucwords($request->input('edit_route_name')),
             ]);
-        return redirect('/userlist')->with('userupdate', 'Updated successfully');
+        return redirect('/routelist')->with('userupdate', 'Updated successfully');;
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\admin  $admin
+     * @param  \App\Models\route  $route
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
-    {   
-        admin::where('id',$id)->delete();
-        return redirect('/userlist')->with('orgdelete','Delete successfully');;
+    {
+        route::where('id',$id)->delete();
+        return redirect('/routelist')->with('orgdelete','Delete successfully');
     }
 }
