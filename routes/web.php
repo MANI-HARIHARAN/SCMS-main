@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\RouteController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -22,9 +23,12 @@ Route::get('/userlist', function () {
 Route::get('/adduser', function () {
     return view('Users.Add');
 });
-// Route::get('/useredit', function () {
-//     return view('Users.Update');
-// });
+Route::get('/routelist', function () {
+    return view('Routes.List');
+});
+Route::get('/addroute', function () {
+    return view('Routes.add');
+});
 
 // =================================brands==========================================================
 Route::get('/brands', [App\Http\Controllers\BrandsController::class,'index'])->name('brands.index');
@@ -39,6 +43,14 @@ Route::get('/brands_delete/{id}', [App\Http\Controllers\BrandsController::class,
 Route::post('/userlist',[AdminController::class,'store']);
 Route::get('/userlist',[AdminController::class,'show']);
 Route::get('/userupdate{id}',[AdminController::class,'edit']);
+Route::post('/userupdate',[AdminController::class,'update']);
 Route::get('/userdelete/{id}',[AdminController::class,'destroy']);
-// Route::get('/orgDelete/{id}',[organizationcontroller::class,'delete']);
-// Route::get('/empsearch',[organizationcontroller::class, 'searchemp']);
+
+
+// =================================routes==========================================================
+
+Route::post('/routelist',[RouteController::class,'store']);
+Route::get('/routelist',[RouteController::class,'show']);
+Route::get('/routeupdate{id}',[RouteController::class,'edit']);
+Route::post('/routeupdate',[RouteController::class,'update']);
+Route::get('/routedelete/{id}',[RouteController::class,'destroy']);

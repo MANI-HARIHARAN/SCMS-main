@@ -10,13 +10,19 @@
             <li class="nav-item">
               <a class="nav-link" href="/userlist">
                 <span class="menu-title">User</span>
-                <i class="mdi mdi mdi-account-star menu-icon"></i>
+                <i class="mdi mdi-account-star menu-icon"></i>
               </a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="/brands">
                 <span class="menu-title">Brand</span>
-                <i class="mdi mdi mdi-ticket menu-icon"></i>
+                <i class="mdi mdi-ticket menu-icon"></i>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/routelist">
+                <span class="menu-title">Routes</span>
+                <i class="mdi mdi-routes menu-icon"></i>
               </a>
             </li>
             <!-- <li class="nav-item">
