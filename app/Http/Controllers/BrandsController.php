@@ -15,7 +15,7 @@ class BrandsController extends Controller
      */
     public function index()
     {
-        $brands = brands::all();
+        $brands = brands::paginate(10);
         return view('Brands.brands', compact('brands'));
        
     }
@@ -53,11 +53,12 @@ class BrandsController extends Controller
      * @param  \App\Models\brands  $brands
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
-{
-    // $brand = brands::find($id);
-    // return view('Brands.show', compact('brand'));
-}
+    public function show(Request $request){
+
+        // $brands = brands::paginate(10);
+        // return view('Brand.brands', ['brands' => $brands]);
+         
+      }
 
 
     /**
