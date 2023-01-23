@@ -13,6 +13,12 @@
                 <i class="mdi mdi mdi-account-star menu-icon"></i>
               </a>
             </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/brands">
+                <span class="menu-title">Brand</span>
+                <i class="mdi mdi mdi-ticket menu-icon"></i>
+              </a>
+            </li>
             <!-- <li class="nav-item">
               <a class="nav-link" data-bs-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
                 <span class="menu-title">Basic UI Elements</span>
