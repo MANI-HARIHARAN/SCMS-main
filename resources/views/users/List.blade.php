@@ -65,7 +65,9 @@
                           <td>{{$value->role}}</td>
                           <td>{{$value->username}}</td>
                           <td>
-                            <a href="/userupdate{{$value->id}}" class="mdi mdi-lead-pencil"></a>
+                            <a href="/userupdate{{$value->id}}" class="mdi mdi-lead-pencil"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <!-- <a class="mdi mdi-delete" href="/userdelete/{{$value->id}}"></a> -->
+                            <a class="mdi mdi-delete" data-href="/userdelete/{{$value->id}}" data-toggle="modal" data-target="#confirm-delete"></a>
                           </td>      
                         </tr>
                       @endforeach
@@ -78,12 +80,28 @@
                   </div>
                 </div>
               </div>
-       
-            
-           
-            
-            
             </div>
+
+  <!-- delete model popup start -->
+    <div class="modal fade" id="confirm-delete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+              <div class="modal-header"><h4>Delete</h4>
+                  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                  <h4 class="modal-title" id="myModalLabel"></h4>
+              </div>
+              <div class="modal-body">
+                  <p>Do you want to proceed?</p>
+                  
+              </div>
+              <div class="modal-footer">
+                  <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                  <a class="btn btn-danger btn-ok">Delete</a>
+              </div>
+          </div>
+      </div>
+    </div>
+  <!-- delete model popup end -->
 <!-- body content end -->          
           @include('layouts.footer')
         </div>
@@ -91,3 +109,12 @@
     </div>
   </body>
 </html>
+
+<script>
+
+  $('#confirm-delete').on('show.bs.modal', function(e) {
+        $(this).find('.btn-ok').attr('href', $(e.relatedTarget).data('href'));
+        $('.debug-url').html('Delete This Id: <strong>' + $(this).find('.btn-ok').attr('href') + '</strong>');
+    });
+
+</script>

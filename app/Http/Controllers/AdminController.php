@@ -64,9 +64,7 @@ class AdminController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
-    {   
-        // $id = $request->input('id');
-       
+    {          
         $users=DB::table('admins')->where('id',$id)->get();
         return view('Users.Update',['users'=>$users]);
     }
@@ -98,8 +96,9 @@ class AdminController extends Controller
      * @param  \App\Models\admin  $admin
      * @return \Illuminate\Http\Response
      */
-    public function destroy(admin $admin)
-    {
-        //
+    public function destroy($id)
+    {   
+        admin::where('id',$id)->delete();
+        return redirect('/userlist')->with('orgdelete','Delete successfully');;
     }
 }
