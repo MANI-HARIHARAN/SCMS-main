@@ -30,6 +30,6 @@ Route::get('/adduser', function () {
 Route::post('/userlist',[AdminController::class,'store']);
 Route::get('/userlist',[AdminController::class,'show']);
 Route::get('/userupdate{id}',[AdminController::class,'edit']);
-// Route::post('/orgUpdate',[organizationcontroller::class,'update']);
+Route::get('/userdelete/{id}',[AdminController::class,'destroy']);
 // Route::get('/orgDelete/{id}',[organizationcontroller::class,'delete']);
 // Route::get('/empsearch',[organizationcontroller::class, 'searchemp']);
