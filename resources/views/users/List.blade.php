@@ -28,7 +28,7 @@
                     </ul>
                 </nav>
             </div>
-<!-- body content start -->
+                <!-- body content start -->
                 <!-- popup toast success start -->
                       @if(session('useradd'))
                       <div class="alert alert-success">
@@ -42,7 +42,7 @@
                       </div>
                       @endif
                 <!-- popup toast success end-->
-            <div class="col-lg-12 grid-margin stretch-card">
+              <div class="col-lg-12 grid-margin stretch-card">
                 <div class="card">
                   <div class="card-body">
                     <h4 class="card-title">Striped Table</h4>
@@ -58,7 +58,7 @@
                         </tr>
                       </thead>
                       <tbody>
-                      @foreach($data as $key=>$value)
+                        @foreach($data as $key=>$value)
                         <tr>
                           <td>{{$key+1}}</td>
                           <td>{{$value->name}}</td>
@@ -69,21 +69,24 @@
                             <a class="mdi mdi-delete" data-href="/userdelete/{{$value->id}}"  data-toggle="modal" data-target="#confirm-delete"></a>
                           </td>      
                         </tr>
-                      @endforeach
+                        @endforeach
                       </tbody>
                       <tr>
-                      <td class="table-paginate" colspan="3">Showing{{$data->firstItem() }} {{ $data->lastItem() }} of {{ $data->total() }}</td>
-                      <td class="table-paginate" colspan="2">{{ $data->links() }}</td>
+                        <td class="table-paginate" colspan="3">Showing{{$data->firstItem() }} {{ $data->lastItem() }} of {{ $data->total() }}</td>
+                        <td class="table-paginate" colspan="2">{{ $data->links() }}</td>
                       </tr>
                     </table>
                   </div>
                 </div>
               </div>
-            </div>
-
-  <!-- delete model popup start -->
- 
-  <div class="modal fade" id="confirm-delete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+          </div>
+          <!-- body content end -->          
+          @include('layouts.footer')
+        </div>
+      </div>
+    </div>
+    <!-- delete model popup start -->
+    <div class="modal fade" id="confirm-delete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered">
           <div class="modal-content">
               <div class="modal-header"><h4>Delete</h4>
@@ -96,26 +99,24 @@
               </div>
               <div class="modal-footer">
                   <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-                  <a class="btn btn-danger btn-ok" href="/userdelete/{{$value->id}}" >Delete</a>
+                  <a class="btn btn-danger btn-ok">Delete</a>
               </div>
           </div>
       </div>
-  </div>
-  <!-- delete model popup end -->
-<!-- body content end -->          
-          @include('layouts.footer')
-        </div>
-      </div>
     </div>
+    <!-- delete model popup end -->
   </body>
 </html>
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 <script>
+    function myFunction() {
+      alert("Are you sure?");
+    }
+    $('#confirm-delete').on('show.bs.modal', function(e) {
+        $(this).find('.btn-ok').attr('href', $(e.relatedTarget).data('href'));
+        $('.debug-url').html('Delete This Id: <strong>' + $(this).find('.btn-ok').attr('href') + '</strong>');
+    });
 
-  $('#confirm-delete').on('show.bs.modal', function(e) {
-    console.log("asdad")
-  $(this).find('.btn-ok').attr('href', $(e.relatedTarget).data('href'));
-  $('.debug-url').html('Delete This Id: <strong>' + $(this).find('.btn-ok').attr('href') + '</strong>');
-  });
-
-</script>
+  </script>
