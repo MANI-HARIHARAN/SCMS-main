@@ -56,8 +56,8 @@
                         @endforeach
                       </tbody>
                           <tr>
-                            <td class="table-paginate" colspan="3">Showing{{$brands->firstItem() }} {{ $brands->lastItem() }} of {{ $brands->total() }}</td>
-                            <td class="table-paginate" colspan="3">{{ $brands->links() }}</td> 
+                            <td class="table-paginate" colspan="2">Showing{{$brands->firstItem() }} {{ $brands->lastItem() }} of {{ $brands->total() }}</td>
+                            <td class="table-paginate" colspan="2">{{ $brands->links() }}</td> 
                           </tr>
                     </table>                   
                   </div>
@@ -73,7 +73,7 @@
           </div>
           <div class="modal-body">
               <p>Do you want to proceed?</p>
-              
+              <p class="debug-url"></p>
           </div>
           <div class="modal-footer">
               <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
@@ -91,12 +91,13 @@
     </div>
   </body>
 </html>
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 <script>
 
-  $('#confirm-delete').on('show.bs.modal', function(e) {
+    $('#confirm-delete').on('show.bs.modal', function(e) {
         $(this).find('.btn-ok').attr('href', $(e.relatedTarget).data('href'));
         $('.debug-url').html('Delete This Id: <strong>' + $(this).find('.btn-ok').attr('href') + '</strong>');
     });
 
-</script>
+  </script>
