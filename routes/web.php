@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\RouteController;
+use App\Http\Controllers\ProductsController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -54,3 +56,12 @@ Route::get('/routelist',[RouteController::class,'show']);
 Route::get('/routeupdate{id}',[RouteController::class,'edit']);
 Route::post('/routeupdate',[RouteController::class,'update']);
 Route::get('/routedelete/{id}',[RouteController::class,'destroy']);
+
+// =======================================products===========================================================
+
+Route::get('/products',[ProductsController::class,'index']);
+Route::get('/products_add',[ProductsController::class,'create']);
+Route::post('/products_store',[ProductsController::class,'store']);
+Route::get('/products_edit/{id}',[ProductsController::class,'edit']);
+Route::post('/products_update/{id}',[ProductsController::class,'update']);
+Route::get('/products_delete/{id}',[ProductsController::class,'destroy']);

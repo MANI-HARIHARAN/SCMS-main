@@ -39,7 +39,9 @@
                         <tr class="table-paginate">
                           <th>S.No</th>
                           <th>Brand Name</th>
+                          <th></th>
                           <th> Action </th>
+                          
                           
                         </tr>
                       </thead>
@@ -48,6 +50,7 @@
                         <tr>
                           <td>{{$info->id}}</td>
                           <td>{{$info->name}}</td> 
+                          <td></td>
                           <td>
                             <a href="/brands_edit{{$info->id}}" class="mdi mdi-lead-pencil"></a>
                             {{-- <a href="/brands_delete/{{$info->id}}" class="mdi mdi-delete"></a> --}}

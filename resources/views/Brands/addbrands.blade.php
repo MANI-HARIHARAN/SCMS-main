@@ -33,14 +33,15 @@
                     <div class="row">
                         <div class="col-md-6">
                           <div class="form-group row">
-                            <label class="col-sm-3 col-form-label">Brand Name</label>
+                            <label class="col-sm-3 col-form-label required">Brand Name</label>
                             <div class="col-sm-9">
                               <input type="text" name ="name" class="form-control"  placeholder="BRAND NAME">
                             </div>
                           </div>
                         </div>
                         <div class="col-md-3 grid-margin stretch-card">
-                          <button type="submit" class="btn btn-gradient-primary me-2">Submit</button>
+                          <button type="submit" class="btn btn-outline-primary btn-sm btn-icon-text">
+                            <i class="btn-icon-prepend"></i>Submit </button>
                       </div>
                     </div>
                     </form>
