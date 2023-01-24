@@ -62,6 +62,6 @@ Route::get('/routedelete/{id}',[RouteController::class,'destroy']);
 Route::get('/products',[ProductsController::class,'index']);
 Route::get('/products_add',[ProductsController::class,'create']);
 Route::post('/products_store',[ProductsController::class,'store']);
-Route::get('/products_edit/{id}',[ProductsController::class,'edit']);
-Route::post('/products_update/{id}',[ProductsController::class,'update']);
+Route::get('/products_edit{id}',[ProductsController::class,'edit']);
+Route::put('/products_update/{id}',[ProductsController::class,'update']);
 Route::get('/products_delete/{id}',[ProductsController::class,'destroy']);

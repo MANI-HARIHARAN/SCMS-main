@@ -30,13 +30,14 @@
                     <form action="/products_update/{{$products->id}}" method="POST">
                       @csrf
                       @method('PUT')
-                    <!-- <p class="card-description"> Personal info </p> -->
-                      <div class="row">
+                      <div class="row ,form-group">
                         <div class="col-md-6">
                           <div class="form-group row">
                             <label class="col-sm-3 col-form-label">products Name</label>
                             <div class="col-sm-9">
-                              <input type="text" name ="name" value="{{$products->name}}" class="form-control"  placeholder="Products NAME">
+                              {{-- <input type="text" name="name" value="{{ old('name', $products->name) }}" class="form-control" placeholder="Products NAME"> --}}
+                              <input type="text" name ="name" value="{{$products->name}}" class="form-control"  placeholder="PRODUCT NAME">
+
                             </div>
                           </div>
                         </div>
@@ -44,13 +45,20 @@
                             <div class="form-group row">
                                 <label class="col-sm-3 col-form-label required">Brand Names</label>
                                 <div class="col-sm-9">
-                                  <select id="selectbox" name="brands"value="{{$products->brands}}">
+                                  <select id="selectbox" name="brands">
                                     @foreach($products as $item)
-                                    <option value="{{ $item->name }}" {{ $item->name == $products->brands ? 'selected' : '' }}>
-                                        {{ $item->name }}
+                                    <option value="{{ old('name', $products->brands) }}">
+                                        {{ $products->brands }}
                                     </option>
                                 @endforeach
                                   </select>
+                                  {{-- <select id="selectbox" name="brands">
+                                    @foreach($products)
+                                        <option value="{{ $products->id }}" {{ $products->id == $product->brand? 'selected' : '' }}>{{ $product->brands }}</option>
+                                    @endforeach
+                                </select> --}}
+                                
+                                
                                 </div>
                             </div>
                         </div>

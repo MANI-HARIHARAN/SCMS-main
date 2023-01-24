@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\products;
+use App\Models\brands;
 use Illuminate\Http\Request;
 use DB;
 
@@ -71,10 +72,10 @@ class ProductsController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
-    {
-        $products = products::find($id);
-        return view('products.edit', compact('products'));
-    }
+{
+    $products = products::find($id);
+    return view('Products.edit', compact('products'));
+}
 
     /**
      * Update the specified resource in storage.
@@ -85,9 +86,9 @@ class ProductsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $products = products::find($id);
-        $products->name = $request->name; 
-        $products->brands = $request->brands;
+        $products = products::findOrFail($id);
+        $products->name = $request->input('name'); 
+        $products->brands = $request->input('brands');
          $products->save();
          return redirect('/products');
     }

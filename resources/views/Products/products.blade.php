@@ -45,15 +45,14 @@
                       </thead>
                       <tbody>
                        
-                      @foreach ($products as $info)
+                      @foreach ($products as $key=>$info)
                       <tr>
-                        <td>{{$info->id}}</td>
+                        <td>{{$key+1}}</td>
                         <td>{{$info->name}}</td> 
                         <td>{{$info->brands}}</td>
                         <td>
-                          <a href="/products_edit/{{$info->id}}" class="mdi mdi-lead-pencil"></a>
-                          <a href="/products_delete/{{$info->id}}" class="mdi mdi-delete"></a>
-                          {{-- <a class="mdi mdi-delete" data-href="/products_delete/{{$info->id}}" data-toggle="modal" data-target="#confirm-delete"></a> --}}
+                          <a href="/products_edit{{$info->id}}" class="mdi mdi-lead-pencil"></a>
+                          <a class="mdi mdi-delete" data-href="/products_delete/{{$info->id}}" data-toggle="modal" data-target="#confirm-delete"></a>
                         </td> 
                       </tr>
                       @endforeach
@@ -70,24 +69,24 @@
 
   <!-- delete model popup start -->
  
-  {{-- <div class="modal fade" id="confirm-delete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered">
-          <div class="modal-content">
-              <div class="modal-header"><h4>Delete</h4>
-                  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                  <h4 class="modal-title" id="myModalLabel"></h4>
-              </div>
-              <div class="modal-body">
-                  <p>Are You Sure ?</p>
-                  <p class="debug-url"></p>
-              </div>
-              <div class="modal-footer">
-                  <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-                  <a class="btn btn-danger btn-ok"  >Delete</a>
-              </div>
-          </div>
-      </div>
-  </div> --}}
+  <div class="modal fade" id="confirm-delete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header"><h4>Delete</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="myModalLabel"></h4>
+            </div>
+            <div class="modal-body">
+                <p>Do you want to proceed?</p>
+                <p class="debug-url"></p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                <a class="btn btn-danger btn-ok">Delete</a>
+            </div>
+        </div>
+    </div>
+  </div>
   <!-- delete model popup end -->
 <!-- body content end -->          
           @include('layouts.footer')
@@ -96,7 +95,8 @@
     </div>
   </body>
 </html>
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 <script>
 
   $('#confirm-delete').on('show.bs.modal', function(e) {

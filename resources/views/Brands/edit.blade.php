@@ -30,8 +30,7 @@
                     <form action="/brands_update/{{$brands->id}}" method="POST">
                       @csrf
                       @method('PUT')
-                    <!-- <p class="card-description"> Personal info </p> -->
-                                      <div class="row">
+                      <div class="row">
                         <div class="col-md-6">
                          
                           <div class="form-group row">

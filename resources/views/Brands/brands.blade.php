@@ -46,15 +46,16 @@
                         </tr>
                       </thead>
                       <tbody>
-                        @foreach ($brands as $info)
+                        @foreach ($brands as $key=>$info)
                         <tr>
-                          <td>{{$info->id}}</td>
+                          <td>{{$key+1}}</td>
                           <td>{{$info->name}}</td> 
                           <td></td>
                           <td>
                             <a href="/brands_edit{{$info->id}}" class="mdi mdi-lead-pencil"></a>
                             {{-- <a href="/brands_delete/{{$info->id}}" class="mdi mdi-delete"></a> --}}
-                            <a class="mdi mdi-delete" data-href="/brands_delete/{{$info->id}}" data-toggle="modal" data-target="#confirm-delete"></a>                </td> 
+                            <a class="mdi mdi-delete" data-href="/brands_delete/{{$info->id}}" data-toggle="modal" data-target="#confirm-delete"></a> 
+                          </td> 
                         </tr>
                         @endforeach
                       </tbody>
