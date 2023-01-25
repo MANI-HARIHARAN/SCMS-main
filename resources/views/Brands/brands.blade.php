@@ -28,6 +28,19 @@
                     </ul>
                 </nav>
              </div>
+             <!-- popup toast success start -->
+             @if(session('brandadd'))
+             <div class="alert alert-success">
+             {{ session('brandadd') }}
+             </div>
+             @endif
+
+             @if(session('brandupdate'))
+             <div class="alert alert-info">
+             {{ session('brandupdate') }}
+             </div>
+             @endif
+       <!-- popup toast success end-->
 <!-- body content start -->
               <div class="col-lg-12 grid-margin stretch-card">
                 <div class="card">
