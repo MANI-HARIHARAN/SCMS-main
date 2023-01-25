@@ -5,6 +5,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\RouteController;
 use App\Http\Controllers\ProductsController;
 
+use App\Http\Controllers\CustomerController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -30,6 +31,12 @@ Route::get('/routelist', function () {
 });
 Route::get('/addroute', function () {
     return view('Routes.add');
+});
+Route::get('/customerlist', function () {
+    return view('Customers.List');
+});
+Route::get('/addcustomer', function () {
+    return view('Customers.add');
 });
 
 // =================================brands==========================================================
@@ -65,3 +72,11 @@ Route::post('/products_store',[ProductsController::class,'store']);
 Route::get('/products_edit{id}',[ProductsController::class,'edit']);
 Route::put('/products_update/{id}',[ProductsController::class,'update']);
 Route::get('/products_delete/{id}',[ProductsController::class,'destroy']);
+// =================================customers==========================================================
+
+Route::get('/addcustomer',[CustomerController::class,'index']);
+Route::post('/customerlist',[CustomerController::class,'store']);
+Route::get('/customerlist',[CustomerController::class,'show']);
+Route::get('/customerupdate{id}',[CustomerController::class,'edit']);
+Route::post('/customerupdate',[CustomerController::class,'update']);
+Route::get('/customerdelete/{id}',[CustomerController::class,'destroy']);

@@ -31,6 +31,12 @@
                 <i class="mdi mdi-routes menu-icon"></i>
               </a>
             </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/customerlist">
+                <span class="menu-title">Customers</span>
+                <i class="mdi mdi-account-multiple menu-icon"></i>
+              </a>
+            </li>
             <!-- <li class="nav-item">
               <a class="nav-link" data-bs-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
                 <span class="menu-title">Basic UI Elements</span>
