@@ -20,6 +20,12 @@
               </a>
             </li>
             <li class="nav-item">
+              <a class="nav-link" href="/products">
+                <span class="menu-title">Products</span>
+                <i class="mdi mdi-shopping menu-icon"></i>
+              </a>
+            </li>
+            <li class="nav-item">
               <a class="nav-link" href="/routelist">
                 <span class="menu-title">Routes</span>
                 <i class="mdi mdi-routes menu-icon"></i>
