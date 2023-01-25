@@ -12,18 +12,18 @@
               <h3 class="page-title">
                   <span class="page-title-icon bg-gradient-primary text-white me-2">
                   <i class="mdi mdi-routes"></i>
-                  </span> Route List
+                  </span> Customer List
               </h3>
               <div  style="float:right">
-                  <a class="nav-link" href="/addroute"> 
+                  <a class="nav-link" href="/addcustomer"> 
                   <span class="page-title-icon bg-primary text-white me-2">
                   <i class="mdi mdi-plus-box mdi-icon"></i>
-                  </span>Add Route</a>
+                  </span>Add Customer</a>
               </div>
               <nav aria-label="breadcrumb">
                   <ul class="breadcrumb">
                   <li class="breadcrumb-item active" aria-current="page">
-                      <span></span>Routelist <i class="mdi mdi-alert-circle-outline icon-sm text-primary align-middle"></i>
+                      <span></span>Customerslist <i class="mdi mdi-alert-circle-outline icon-sm text-primary align-middle"></i>
                   </li>
                   </ul>
               </nav>
@@ -45,13 +45,17 @@
             <div class="col-lg-12 grid-margin stretch-card">
               <div class="card">
                 <div class="card-body">
-                  <h4 class="card-title">Route Table</h4>
+                  <h4 class="card-title">Customer Table</h4>
                   </p>
                   <table class="table table-striped table-bordered">
                     <thead>
                       <tr class="table-paginate">
                         <th> S.No</th>
+                        <th> Customer Name</th>
+                        <th> Mobile no</th>
                         <th> Route Name</th>
+                        <th> Address</th>
+                        <th> Outstanding </th>
                         <th> Action </th>
                       </tr>
                     </thead>
@@ -59,17 +63,21 @@
                     @foreach($data as $key=>$value)
                       <tr>
                         <td>{{$key+1}}</td>
+                        <td>{{$value->customer_name}}</td>
+                        <td>{{$value->customer_mobile}}</td>
                         <td>{{$value->route_name}}</td>
+                        <td>{{$value->customer_address}}</td>
+                        <td>{{$value->outstanding}}</td>
                         <td>
-                          <a href="/routeupdate{{$value->id}}" class="mdi mdi-lead-pencil"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                          <a class="mdi mdi-delete" data-href="/routedelete/{{$value->id}}"  data-toggle="modal" data-target="#confirm-delete"></a>
+                          <a href="/customerupdate{{$value->id}}" class="mdi mdi-lead-pencil"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                          <a class="mdi mdi-delete" data-href="/customerdelete/{{$value->id}}"  data-toggle="modal" data-target="#confirm-delete"></a>
                         </td>      
                       </tr>
                     @endforeach
                     </tbody>
                     <tr>
-                    <td class="table-paginate" colspan="2">Showing{{$data->firstItem() }} {{ $data->lastItem() }} of {{ $data->total() }}</td>
-                    <td class="table-paginate" colspan="2">{{ $data->links() }}</td>
+                    <td class="table-paginate" colspan="4">Showing{{$data->firstItem() }} {{ $data->lastItem() }} of {{ $data->total() }}</td>
+                    <td class="table-paginate" colspan="3">{{ $data->links() }}</td>
                     </tr> 
                   </table>
                 </div>

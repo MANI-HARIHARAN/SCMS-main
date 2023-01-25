@@ -36,10 +36,10 @@ class RouteController extends Controller
      */
     public function store(Request $request)
     {
-        $userData = new route();
-        $userData->route_name = ucwords($request->route_name);
-        $userData->save();
-        return redirect('/routelist')->with('useradd', 'User Added Successfully');
+        $routeData = new route();
+        $routeData->route_name = ucwords($request->route_name);
+        $routeData->save();
+        return redirect('/routelist')->with('useradd', 'Route Created Successfully');
     }
 
     /**
@@ -62,7 +62,7 @@ class RouteController extends Controller
      */
     public function edit($id)
     {
-        $users=DB::table('routes')->where('id',$id)->get();
+        $users=route::where('id',$id)->get();
         return view('Routes.Update',['users'=>$users]);
     }
 
@@ -81,7 +81,7 @@ class RouteController extends Controller
             [
                 'route_name'=> ucwords($request->input('edit_route_name')),
             ]);
-        return redirect('/routelist')->with('userupdate', 'Updated successfully');;
+        return redirect('/routelist')->with('userupdate', 'Updated successfully');
     }
 
     /**
