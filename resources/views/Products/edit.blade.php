@@ -33,7 +33,7 @@
                       <div class="row ,form-group">
                         <div class="col-md-6">
                           <div class="form-group row">
-                            <label class="col-sm-3 col-form-label">products Name</label>
+                            <label class="col-sm-3 col-form-label required">products Name</label>
                             <div class="col-sm-9">
                               {{-- <input type="text" name="name" value="{{ old('name', $products->name) }}" class="form-control" placeholder="Products NAME"> --}}
                               <input type="text" name ="name" value="{{$products->name}}" class="form-control"  placeholder="PRODUCT NAME">
