@@ -66,7 +66,7 @@ class AdminController extends Controller
     public function edit($id)
     {          
         $users=DB::table('admins')->where('id',$id)->get();
-        return view('Users.Update',['users'=>$users]);
+        return view('Users.update',['users'=>$users]);
     }
 
     /**

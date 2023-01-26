@@ -14,13 +14,6 @@
                   <i class="mdi  mdi-ticket menu-icon"></i>
                 </span> Update Brand
               </h3>
-              <nav aria-label="breadcrumb">
-                <ul class="breadcrumb">
-                  <li class="breadcrumb-item active" aria-current="page">
-                    <span></span>Updatebrand <i class="mdi mdi-alert-circle-outline icon-sm text-primary align-middle"></i>
-                  </li>
-                </ul>
-              </nav>
             </div>
             <!-- body content start -->
             <div class="col-lg-12 grid-margin stretch-card">
@@ -44,7 +37,7 @@
                         </div>
                       
                         <div class="col-md-3 grid-margin stretch-card">
-                          <button type="submit" class="btn btn-outline-primary btn-sm btn-icon-text">
+                          <button type="submit" class="btn btn-gradient-primary btn-sm btn-icon-text">
                             <i class="btn-icon-prepend"></i>Update </button>
                       </div>
                     </div>
