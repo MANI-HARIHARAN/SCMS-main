@@ -14,19 +14,14 @@
                     <i class="mdi mdi-account"></i>
                     </span> User List
                 </h3>
-                <div  style="float:right">
+                <div style="float:right">
+                <h3 class="page-title">
                     <a class="nav-link" href="/adduser"> 
-                    <span class="page-title-icon bg-primary text-white me-2">
-                    <i class="mdi mdi-plus-box mdi-icon"></i>
-                    </span>Add User</a>
+                    <span style="width: 150px;font-size :16px;" class="page-title-icon bg-gradient-primary text-white me-2">
+                    <i class="mdi mdi-plus-box mdi-icon"></i>&nbsp;Add User
+                    </span></a>
+                </h3>
                 </div>
-                <nav aria-label="breadcrumb">
-                    <ul class="breadcrumb">
-                    <li class="breadcrumb-item active" aria-current="page">
-                        <span></span>Userlist <i class="mdi mdi-alert-circle-outline icon-sm text-primary align-middle"></i>
-                    </li>
-                    </ul>
-                </nav>
             </div>
                 <!-- body content start -->
                 <!-- popup toast success start -->
@@ -45,7 +40,7 @@
               <div class="col-lg-12 grid-margin stretch-card">
                 <div class="card">
                   <div class="card-body">
-                    <h4 class="card-title">Striped Table</h4>
+                    <h4 class="card-title">Users Table</h4>
                     </p>
                     <table class="table table-striped table-bordered">
                       <thead>
@@ -95,7 +90,7 @@
               </div>
               <div class="modal-body">
                   <p>Are You Sure ?</p>
-                  <p class="debug-url"></p>
+                  <!-- <p class="debug-url"></p> -->
               </div>
               <div class="modal-footer">
                   <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>

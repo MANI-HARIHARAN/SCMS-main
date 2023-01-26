@@ -14,19 +14,14 @@
                   <i class="mdi mdi-routes"></i>
                   </span> Customer List
               </h3>
-              <div  style="float:right">
-                  <a class="nav-link" href="/addcustomer"> 
-                  <span class="page-title-icon bg-primary text-white me-2">
-                  <i class="mdi mdi-plus-box mdi-icon"></i>
-                  </span>Add Customer</a>
+              <div style="float:right">
+                  <h3 class="page-title">
+                      <a class="nav-link" href="/addcustomer"> 
+                      <span style="width: 150px;font-size :16px;" class="page-title-icon bg-gradient-primary text-white me-2">
+                      <i class="mdi mdi-plus-box mdi-icon"></i>&nbsp;Add Customer
+                      </span></a>
+                  </h3>
               </div>
-              <nav aria-label="breadcrumb">
-                  <ul class="breadcrumb">
-                  <li class="breadcrumb-item active" aria-current="page">
-                      <span></span>Customerslist <i class="mdi mdi-alert-circle-outline icon-sm text-primary align-middle"></i>
-                  </li>
-                  </ul>
-              </nav>
           </div>
                 <!-- body content start -->
               <!-- popup toast success start -->
@@ -99,7 +94,7 @@
             </div>
             <div class="modal-body">
                 <p>Are You Sure ?</p>
-                <p class="debug-url"></p>
+                <!-- <p class="debug-url"></p> -->
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>

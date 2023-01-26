@@ -14,13 +14,6 @@
                   <i class="mdi mdi-account-plus"></i>
                 </span> Add User
               </h3>
-              <nav aria-label="breadcrumb">
-                <ul class="breadcrumb">
-                  <li class="breadcrumb-item active" aria-current="page">
-                    <span></span>Adduser <i class="mdi mdi-alert-circle-outline icon-sm text-primary align-middle"></i>
-                  </li>
-                </ul>
-              </nav>
             </div>
             <!-- body content start -->
             <div class="col-lg-12 grid-margin stretch-card">
@@ -41,7 +34,7 @@
                                     </div>
                                 </div>
                                 <div class="col-md-6">
-                                    <button type="submit" class="btn btn-outline-primary btn-sm btn-icon-text">
+                                    <button type="submit" class="btn btn-gradient-primary btn-sm btn-icon-text">
                                     <i class="btn-icon-prepend"></i>Submit </button>
                                 </div>
                             </div>

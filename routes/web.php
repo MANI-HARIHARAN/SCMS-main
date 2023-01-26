@@ -24,7 +24,7 @@ Route::get('/userlist', function () {
     return view('Users.List');
 });
 Route::get('/adduser', function () {
-    return view('Users.Add');
+    return view('Users.add');
 });
 Route::get('/routelist', function () {
     return view('Routes.List');
