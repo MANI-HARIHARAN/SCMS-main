@@ -144,19 +144,19 @@
 
 
                           <div class="col-sm-12">
-                            <input type="number" class="form-control" placeholder="₹" name="po_qty[]" required />
+                            <input type="number" class="form-control" placeholder="₹" name="qty[]" required />
                           </div>
 
                         </td>
                         <td style="width:10%;">
                           <div class="col-sm-12">
-                            <input type="number" class="form-control" placeholder="₹" name="po_gst[]" required />
+                            <input type="number" class="form-control" placeholder="₹" name="gst[]" required />
                           </div>
                         </td>
                         <td style="width:10%;">
 
                           <div class="col-sm-12">
-                            <input type="number" class="form-control" placeholder="₹" name="po_rate[]" required />
+                            <input type="number" class="form-control" placeholder="₹" name="rate[]" required />
                           </div>
                         </td>
                         <td style="width:10%;">
