@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\RouteController;
 use App\Http\Controllers\ProductsController;
+use App\Http\Controllers\PurchaseOrderController;
 
 use App\Http\Controllers\CustomerController;
 /*
@@ -37,6 +38,9 @@ Route::get('/customerlist', function () {
 });
 Route::get('/addcustomer', function () {
     return view('Customers.add');
+});
+Route::get('/addpo', function () {
+    return view('PO.add');
 });
 
 // =================================brands==========================================================
@@ -80,3 +84,6 @@ Route::get('/customerlist',[CustomerController::class,'show']);
 Route::get('/customerupdate{id}',[CustomerController::class,'edit']);
 Route::post('/customerupdate',[CustomerController::class,'update']);
 Route::get('/customerdelete/{id}',[CustomerController::class,'destroy']);
+// =================================PO==========================================================
+
+Route::get('/addpo',[PurchaseOrderController::class,'index']);
