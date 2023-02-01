@@ -51,7 +51,7 @@ class ProductsController extends Controller
         $products->name = $request->name;
         $products->brands = $request->brands;
         $products->save();
-        return redirect('/products');
+        return redirect('/products')->with('productadd', 'Product Added Successfully');
     }
 
     /**
@@ -74,7 +74,15 @@ class ProductsController extends Controller
     public function edit($id)
 {
     $products = products::find($id);
-    return view('Products.edit', compact('products'));
+    // $products = DB::table('brands')->get();
+    $brands = brands::all();
+    return view('Products.edit', compact('products','brands'));
+  
+// $options = DB::table('your_table_name')->select('id','column_name')->get(); 
+
+
+
+
 }
 
     /**
@@ -90,7 +98,7 @@ class ProductsController extends Controller
         $products->name = $request->input('name'); 
         $products->brands = $request->input('brands');
          $products->save();
-         return redirect('/products');
+         return redirect('/products')->with('productupdate', 'Updated Successfully');
     }
 
     /**

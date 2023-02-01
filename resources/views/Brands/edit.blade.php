@@ -28,7 +28,7 @@
                          
                           <div class="form-group row">
                          
-                            <label class="col-sm-3 col-form-label">Brand Name</label>
+                            <label class="col-sm-3 col-form-label required">Brand Name</label>
                             <div class="col-sm-9">
                               <input type="text" name ="name" value="{{$brands->name}}" class="form-control"  placeholder="BRAND NAME">
                             </div>

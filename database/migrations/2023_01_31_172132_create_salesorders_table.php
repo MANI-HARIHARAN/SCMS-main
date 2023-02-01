@@ -13,26 +13,23 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('purchase_orders', function (Blueprint $table) {
+        Schema::create('salesorders', function (Blueprint $table) {
             $table->id();
             $table->string('date');
-            $table->string('bill_type');
+            $table->string('route');
             $table->string('company_name');
-            $table->string('po_no');
-            $table->string('po_date');
+            $table->string('bill_type');
             $table->string('brand_name');
             $table->string('product_name');
             $table->string('uom');
             $table->string('qty');
             $table->string('gst');
-            $table->string('mrp');
-            $table->string('wrate');
-            $table->string('rrate');
-            $table->string('orate');
+            $table->string('rate');
             $table->string('product_total');
             $table->string('grand_total');
-            $table->string('orate');
-            $table->string('created_by');
+            $table->string('cash_received');
+            $table->string('balance');
+            $table->string('total_outstanding');
             $table->timestamps();
         });
     }
@@ -44,6 +41,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('purchase_orders');
+        Schema::dropIfExists('salesorders');
     }
 };

@@ -50,7 +50,12 @@
                 </ul>
               </div>
             </li>
-            
+            <li class="nav-item">
+              <a class="nav-link" href="/sales">
+                <span class="menu-title">Sales Order</span>
+                <i class="mdi mdi-store menu-icon"></i>
+              </a>
+            </li>
            
           </ul>
         </nav>

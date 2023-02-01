@@ -44,7 +44,7 @@ class BrandsController extends Controller
         $brands = new brands;
         $brands->name = $request->name;
         $brands->save();
-        return redirect()->route('brands.index')->with('message','Brands added successfully');
+        return redirect('/brands')->with('brandadd','Brands added successfully');
     }
 
     /**
@@ -85,7 +85,7 @@ class BrandsController extends Controller
         $brands = brands::find($id);
         $brands->name = $request->name;   
          $brands->save();
-         return redirect('/brands');
+         return redirect('/brands')->with('brandupdate', 'Update Successfully');
         
     }
 
