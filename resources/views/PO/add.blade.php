@@ -17,7 +17,7 @@
             </h3>
           </div>
           <!-- body content start -->
-          <form class="form-sample" method="POST" action="userlist" enctype="multipart/form-data">
+          <form class="form-sample" method="POST" action="po_insert" enctype="multipart/form-data">
             <input type="hidden" name="_token" value="{{ csrf_token() }}">
             @csrf
             <div class="col-lg-12 grid-margin stretch-card">
@@ -31,7 +31,7 @@
                       <div class="form-group row">
                         <label class="required">Date</label>
                         <div class="col-sm-9">
-                          <input type="date" class="form-control" value="<?php echo date("Y-m-d") ?>" name="name" required>
+                          <input type="date" class="form-control" value="<?php echo date("Y-m-d") ?>" name="date" required>
                         </div>
                       </div>
                     </div>
@@ -85,7 +85,7 @@
                 <table id="addrow" width="100%">
 
                   <div class="row card-body">
-                    <button style="width:15%;margin-bottom:30px" type="addrowdata" class="btn-info btn-sm btn-icon-text btn btn-success addButton offset-1">
+                    <button style="width:15%;" type="addrowdata" class="btn-info btn-sm btn-icon-text btn btn-success addButton offset-1">
                       <i class="mdi mdi-plus-circle"></i>Add Product
                     </button>
                   </div>
@@ -130,7 +130,7 @@
                         <td style="width:10%;">
 
                           <div class="col-sm-12">
-                            <select class="form-control" name="uom[]" required>
+                            <select class="form-select" name="po_uom[]" required>
                               <option disabled>select</option>
                               <option value="kgs">kgs</option>
                               <option value="unit">unit</option>
@@ -151,7 +151,7 @@
                         </td>
                         <td style="width:10%;">
                           <div class="col-sm-12">
-                            <input type="number" class="form-control" placeholder="₹" name="po_gst[]" required />
+                            <input type="number" class="form-control" placeholder="%" name="po_gst[]" required />
                           </div>
                         </td>
                         <td style="width:10%;">
@@ -176,7 +176,7 @@
                         <td style="width:10%;">
 
                           <div class="col-sm-12">
-                            <input type="number" class="form-control" placeholder="₹" name="orate[]" required />
+                            <input type="number" class="form-control" placeholder="₹" name="po_orate[]" required />
                           </div>
                         </td>
                         <td style="width:10%;">

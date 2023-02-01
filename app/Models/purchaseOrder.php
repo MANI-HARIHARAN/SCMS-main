@@ -19,6 +19,7 @@ class purchaseOrder extends Model
         'uom',
         'qty',
         'mrp',
+        'gst',
         'wrate',
         'rrate',
         'orate',

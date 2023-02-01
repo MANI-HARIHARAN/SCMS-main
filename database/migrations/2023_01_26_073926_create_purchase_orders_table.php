@@ -25,12 +25,12 @@ return new class extends Migration
             $table->string('uom');
             $table->string('qty');
             $table->string('mrp');
+            $table->string('gst');
             $table->string('wrate');
             $table->string('rrate');
             $table->string('orate');
             $table->string('product_total');
             $table->string('grand_total');
-            $table->string('orate');
             $table->string('created_by');
             $table->timestamps();
         });

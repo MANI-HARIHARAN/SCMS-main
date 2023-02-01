@@ -87,3 +87,4 @@ Route::get('/customerdelete/{id}',[CustomerController::class,'destroy']);
 // =================================PO==========================================================
 
 Route::get('/addpo',[PurchaseOrderController::class,'index']);
+Route::post('/po_insert',[PurchaseOrderController::class,'store']);
