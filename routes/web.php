@@ -92,3 +92,6 @@ Route::get('/addpo',[PurchaseOrderController::class,'index']);
 //======================================SO================================================================
 
 Route::get('/sales',[SalesorderController::class,'index']);
+Route::post('/addso',[SalesorderController::class,'store']);
+
+
