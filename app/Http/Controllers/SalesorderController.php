@@ -20,9 +20,10 @@ class SalesorderController extends Controller
     {
         $brands = brands::select('name')->get();
         $products = products::select('name')->get();
-        $customer = customer::select('name')->get();
-        $route = route::select('name')->get();
-        return view('SO.home',['brands'=>$brands],['products'=>$products],['route'=>$route],['customer'=>$customer]);
+        $customer = customer::select('customer_name')->get();
+        $route = route::select('route_name')->get();
+        // $salesorder = salesorder::paginate(10);
+        return view('SO.home', compact('products','brands','customer','route'));
     }
 
     /**

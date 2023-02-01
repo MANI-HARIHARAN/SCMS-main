@@ -18,7 +18,7 @@
           </div>
           <!-- body content start -->
           <form class="form-sample" method="POST" action="userlist" enctype="multipart/form-data">
-            <input type="hidden" name="_token" value="{{ csrf_token() }}">
+            <input type="hidden" name="_token" value="{{ csrf_token()}}">
             @csrf
             <div class="col-lg-12 grid-margin stretch-card">
               <div class="card">
@@ -52,9 +52,9 @@
                       <div class="form-group row">
                         <label class="required">Customer Name</label>
                         <div class="col-sm-9">
-                            <select id="selectbox" name="customer_name">
+                            <select id="selectbox" name="customer[]">
                               @foreach($customer as $item)
-                                  <option value="{{ $item->name }}">{{ $item->name }}</option>
+                                  <option value="{{ $item->customer_name }}">{{ $item->customer_name }}</option>
                               @endforeach
                             </select>
                           </div>
@@ -64,9 +64,9 @@
                       <div class="form-group row">
                         <label class="required">Route</label>
                         <div class="col-sm-9">
-                            <select id="selectbox" name="route">
+                            <select id="selectbox" name="route[]">
                               @foreach($route as $item)
-                                  <option value="{{ $item->name }}">{{ $item->name }}</option>
+                                  <option value="{{ $item->route_name}}">{{ $item->route_name}}</option>
                               @endforeach
                             </select>
                           </div>
@@ -128,7 +128,7 @@
                         </td>
                         <td style="width:10%;">
 
-                          <div class="col-sm-12">
+                          <div class="col-sm-15">
                             <select class="form-control" name="uom[]" required>
                               <option disabled>select</option>
                               <option value="kgs">kgs</option>
@@ -143,49 +143,49 @@
                         <td style="width:10%;">
 
 
-                          <div class="col-sm-12">
+                          <div class="col-sm-15">
                             <input type="number" class="form-control" placeholder="₹" name="qty[]" required />
                           </div>
 
                         </td>
                         <td style="width:10%;">
-                          <div class="col-sm-12">
+                          <div class="col-sm-15">
                             <input type="number" class="form-control" placeholder="₹" name="gst[]" required />
                           </div>
                         </td>
                         <td style="width:10%;">
 
-                          <div class="col-sm-12">
+                          <div class="col-sm-15">
                             <input type="number" class="form-control" placeholder="₹" name="rate[]" required />
                           </div>
                         </td>
                         <td style="width:10%;">
 
-                          <div class="col-sm-12">
+                          <div class="col-sm-15">
                             <input type="number" class="form-control" placeholder="₹" name="product_total[]" required />
                           </div>
                         </td>
                         <td style="width:10%;">
 
-                          <div class="col-sm-12">
+                          <div class="col-sm-15">
                             <input type="number" class="form-control" placeholder="₹" name="grand_total[]" required />
                           </div>
                         </td>
                         <td style="width:10%;">
 
-                            <div class="col-sm-12">
+                            <div class="col-sm-15">
                               <input type="number" class="form-control" placeholder="₹" name="cash_received[]" required />
                             </div>
                           </td>
                           <td style="width:10%;">
 
-                            <div class="col-sm-12">
+                            <div class="col-sm-15">
                               <input type="number" class="form-control" placeholder="₹" name="balance[]" required />
                             </div>
                           </td>
                           <td style="width:10%;">
 
-                            <div class="col-sm-12">
+                            <div class="col-sm-15">
                               <input type="number" class="form-control" placeholder="₹" name="total_outstanding[]" required />
                             </div>
                           </td>
