@@ -44,7 +44,42 @@ class SalesorderController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'date'=>'required',
+            'route'=>'required',
+            'company_name'=>'required',
+            'bill_type'=>'required',
+            'brand_name'=>'required',
+            'product_name'=>'required',
+            'uom'=>'required',
+            'qty'=>'required',
+            'gst'=>'required',
+            'rate'=>'required',
+            'product_total'=>'required',
+            'grand_total'=>'required',
+            'cash_received'=>'required',
+            'balance'=>'required',
+            'total_outstanding'=>'required',
+    
+        ]);
+        $salesorder = new salesorder;
+        $salesorder->date = $request->date;
+        $salesorder->route = $request->route;
+        $salesorder->company_name = $request->company_name;
+        $salesorder->bill_type = $request->bill_type;
+        $salesorder->brand_name = $request->brand_name;
+        $salesorder->product_name = $request->product_name;
+        $salesorder->uom = $request->uom;
+        $salesorder->qty = $request->qty;
+        $salesorder->gst = $request->gst;
+        $salesorder->rate = $request->rate;
+        $salesorder->product_total = $request->product_total;
+        $salesorder->grand_total = $request->grand_total;
+        $salesorder->cash_received = $request->cash_received;
+        $salesorder->balance = $request->balance;
+        $salesorder->total_outstanding = $request->total_outstanding;
+        $salesorder->save();
+        return redirect('/sales');
     }
 
     /**
