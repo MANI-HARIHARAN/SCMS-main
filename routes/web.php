@@ -5,7 +5,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\RouteController;
 use App\Http\Controllers\ProductsController;
 use App\Http\Controllers\PurchaseOrderController;
-
+use App\Http\Controllers\SalesorderController;
 use App\Http\Controllers\CustomerController;
 /*
 |--------------------------------------------------------------------------
@@ -84,7 +84,12 @@ Route::get('/customerlist',[CustomerController::class,'show']);
 Route::get('/customerupdate{id}',[CustomerController::class,'edit']);
 Route::post('/customerupdate',[CustomerController::class,'update']);
 Route::get('/customerdelete/{id}',[CustomerController::class,'destroy']);
-// =================================PO==========================================================
+// =================================PO==================================================================
 
 Route::get('/addpo',[PurchaseOrderController::class,'index']);
 Route::post('/po_insert',[PurchaseOrderController::class,'store']);
+
+
+//======================================SO================================================================
+
+Route::get('/sales',[SalesorderController::class,'index']);

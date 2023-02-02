@@ -18,6 +18,7 @@ class purchaseOrder extends Model
         'product_name',
         'uom',
         'qty',
+        'gst',
         'mrp',
         'gst',
         'wrate',

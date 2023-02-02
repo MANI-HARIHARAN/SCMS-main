@@ -23,6 +23,19 @@
                   </h3>
                 </div>
             </div>
+            <!-- popup toast success start -->
+            @if(session('productadd'))
+            <div class="alert alert-success">
+            {{ session('productadd') }}
+            </div>
+            @endif
+
+            @if(session('productupdate'))
+            <div class="alert alert-info">
+            {{ session('productupdate') }}
+            </div>
+            @endif
+      <!-- popup toast success end-->
 <!-- body content start -->
             <div class="col-lg-12 grid-margin stretch-card">
                 <div class="card">
