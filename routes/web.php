@@ -42,6 +42,9 @@ Route::get('/addcustomer', function () {
 Route::get('/addpo', function () {
     return view('PO.add');
 });
+Route::get('/polist', function () {
+    return view('PO.List');
+});
 
 // =================================brands==========================================================
 Route::get('/brands', [App\Http\Controllers\BrandsController::class,'index'])->name('brands.index');
@@ -88,7 +91,7 @@ Route::get('/customerdelete/{id}',[CustomerController::class,'destroy']);
 
 Route::get('/addpo',[PurchaseOrderController::class,'index']);
 Route::post('/po_insert',[PurchaseOrderController::class,'store']);
-
+Route::get('/polist',[PurchaseOrderController::class,'show']);
 
 //======================================SO================================================================
 

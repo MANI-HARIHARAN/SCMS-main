@@ -119,9 +119,10 @@ class PurchaseOrderController extends Controller
             'created_by' => $request->po_number,
             );
            
-            print_r($data[$i]);
+            //print_r($data[$i]);
+            DB::table('purchase_orders')->insert($data[$i]);
         }
-        DB::table('purchase_orders')->insert($data[$i]);
+        
         echo "insert sucessfully";
         
        // return redirect('/customerlist')->with('useradd', 'User Added Successfully');
@@ -135,7 +136,13 @@ class PurchaseOrderController extends Controller
      */
     public function show(purchaseOrder $purchaseOrder)
     {
-        //
+        $data=purchaseOrder::paginate(10);
+        // $group=DB::select('SELECT *,po_no,bill_date,bill_type,company_name,po_date, COUNT(*) as total FROM purchase_orders GROUP BY po_no');
+        // $group = DB::table('purchase_orders')
+        // ->select('*','po_no','bill_date','bill_type','company_name','po_date')
+        // ->groupBy('po_no')
+        // ->get();
+        return view('PO.List',['data'=>$data]);
     }
 
     /**
