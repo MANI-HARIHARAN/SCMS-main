@@ -17,7 +17,7 @@
             </h3>
           </div>
           <!-- body content start -->
-          <form class="form-sample" method="POST" action="/addso" enctype="multipart/form-data">
+          <form id="order-entry-form" class="form-sample" method="POST" action="/addso" enctype="multipart/form-data">
             <input type="hidden" name="_token" value="{{ csrf_token()}}">
             @csrf
             
@@ -107,7 +107,7 @@
                         <td style="width:15%;">
 
                           <div class="col-sm-12">
-                            <select class="form-select" name="brand_name" required>
+                            <select class="form-select" name="brand_name[]" required>
                               <option disabled>select</option>
                               @foreach($brands as $brands)
                               <option value="{{$brands->name}}">{{$brands->name}}</option>
@@ -118,7 +118,7 @@
                         <td style="width:10%;">
 
                           <div class="col-sm-12">
-                            <select class="form-select" name="product_name" required>
+                            <select class="form-select" name="product_name[]" required>
                               <option disabled>select</option>
                               @foreach($products as $products)
                               <option value="{{$products->name}}">{{$products->name}}</option>
@@ -130,7 +130,7 @@
                         <td style="width:10%;">
 
                           <div class="col-sm-15">
-                            <select class="form-control" name="uom" required>
+                            <select class="form-control" name="uom[]" required>
                               <option disabled>select</option>
                               <option value="kgs">kgs</option>
                               <option value="unit">unit</option>
@@ -145,49 +145,49 @@
 
 
                           <div class="col-sm-15">
-                            <input type="number" class="form-control" placeholder="₹" name="qty" required />
+                            <input type="number" class="form-control" placeholder="₹" id="qty"name="qty[]" required />
                           </div>
 
                         </td>
                         <td style="width:10%;">
                           <div class="col-sm-15">
-                            <input type="number" class="form-control" placeholder="₹" name="gst" required />
+                            <input type="number" class="form-control" placeholder="₹" name="gst[]" required />
                           </div>
                         </td>
                         <td style="width:10%;">
 
                           <div class="col-sm-15">
-                            <input type="number" class="form-control" placeholder="₹" name="rate" required />
+                            <input type="number" class="form-control" placeholder="₹" id="rate" name="rate[]" required />
                           </div>
                         </td>
                         <td style="width:10%;">
 
                           <div class="col-sm-15">
-                            <input type="number" class="form-control" placeholder="₹" name="product_total" required />
+                            <input type="number" class="form-control" placeholder="₹" id="product_total" name="product_total[]" required />
                           </div>
                         </td>
                         <td style="width:10%;">
 
                           <div class="col-sm-15">
-                            <input type="number" class="form-control" placeholder="₹" name="grand_total" required />
+                            <input type="number" class="form-control" placeholder="₹" id="grand_total"name="grand_total[]" required />
                           </div>
                         </td>
                         <td style="width:10%;">
 
                             <div class="col-sm-15">
-                              <input type="number" class="form-control" placeholder="₹" name="cash_received" required />
+                              <input type="number" class="form-control" placeholder="₹" id="cash_received" name="cash_received[]" required />
                             </div>
                           </td>
                           <td style="width:10%;">
 
                             <div class="col-sm-15">
-                              <input type="number" class="form-control" placeholder="₹" name="balance" required />
+                              <input type="number" class="form-control" placeholder="₹" id="balance" name="balance[]" required />
                             </div>
                           </td>
                           <td style="width:10%;">
 
                             <div class="col-sm-15">
-                              <input type="number" class="form-control" placeholder="₹" name="total_outstanding" required />
+                              <input type="number" class="form-control" placeholder="₹" id="total_outstanding" name="total_outstanding" required />
                             </div>
                           </td>
                         <td style="width:10%;">
@@ -223,6 +223,29 @@
 
 </html>
 <script>
+  
+  // Get Form Elements
+  var form = document.getElementById("order-entry-form");
+  var qty = document.getElementById("qty");
+  var rate = document.getElementById("rate");
+  var product_total = document.getElementById("product_total");
+  var grand_total = document.getElementById("grand_total");
+  var cash_received = document.getElementById("cash_received");
+  var balance = document.getElementById("balance");
+  var total_outstanding = document.getElementById("total_outstanding");
+  
+
+  // Calculate product_total on Input Change
+  form.addEventListener("input", function () {
+    product_total.value = qty.value * rate.value;
+  });
+  form.addEventListener("input", function () {
+    grand_total.value = product_total.value;
+  });
+  form.addEventListener("input", function () {
+    balance.value = grand_total.value-cash_received.value;
+  });
+
   $(function() {
     $(".addButton").click(function() {
       $('.clonetr:last').clone(true).appendTo("#addrow");
@@ -236,5 +259,6 @@
 
     });
   });
+
 </script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>

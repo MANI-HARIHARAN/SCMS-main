@@ -8,7 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class salesorder extends Model
 {
     use HasFactory;
-    protected $table='salesorders';
     protected $fillable=[
         'date',
         'route',
