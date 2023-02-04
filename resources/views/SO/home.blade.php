@@ -96,16 +96,14 @@
                       <th class="form-group required" style="width:10%;padding-left:20px">gst</th>
                       <th class="form-group required" style="width:10%;padding-left:20px">mrp</th>
                       <th class="form-group required" style="width:10%;padding-left:20px">Product Total</th>
-                      <th class="form-group required" style="width:10%;padding-left:20px">Grand Total</th>
-                      <th class="form-group required" style="width:10%;padding-left:20px">Cash Receiveid</th>
-                      <th class="form-group required" style="width:10%;padding-left:20px">Balance</th>
-                      <th class="form-group required" style="width:10%;padding-left:20px">Total Oustanding</th>
+                      {{-- <th class="form-group required" style="width:10%;padding-left:20px">Grand Total</th> --}}
+                      {{-- <th class="form-group required" style="width:10%;padding-left:20px">Cash Receiveid</th> --}}
+                      {{-- <th class="form-group required" style="width:10%;padding-left:20px">Balance</th> --}}
+                      {{-- <th class="form-group required" style="width:10%;padding-left:20px">Total Oustanding</th> --}}
                     </tr>
                     <div class="row">
-
                       <tr class="clonetr">
                         <td style="width:15%;">
-
                           <div class="col-sm-12">
                             <select class="form-select" name="brand_name[]" required>
                               <option disabled>select</option>
@@ -167,31 +165,6 @@
                           </div>
                         </td>
                         <td style="width:10%;">
-
-                          <div class="col-sm-15">
-                            <input type="number" class="form-control" placeholder="₹" id="grand_total"name="grand_total[]" required />
-                          </div>
-                        </td>
-                        <td style="width:10%;">
-
-                            <div class="col-sm-15">
-                              <input type="number" class="form-control" placeholder="₹" id="cash_received" name="cash_received[]" required />
-                            </div>
-                          </td>
-                          <td style="width:10%;">
-
-                            <div class="col-sm-15">
-                              <input type="number" class="form-control" placeholder="₹" id="balance" name="balance[]" required />
-                            </div>
-                          </td>
-                          <td style="width:10%;">
-
-                            <div class="col-sm-15">
-                              <input type="number" class="form-control" placeholder="₹" id="total_outstanding" name="total_outstanding" required />
-                            </div>
-                          </td>
-                        <td style="width:10%;">
-
                           <div class="col-sm-12">
                             <button type="remove" class="btn btn-danger deleteButton btn-sm btn-icon-text ">
                               <i class="mdi mdi-delete"></i>
@@ -199,8 +172,50 @@
                           </div>
                         </td>
                       </tr>
+                    </div>    
+                        <div class="row">
+                          <tr>
+                            <th class="form-group required" style="width:10%;padding-left:20px">Grand Total    </th>
+                            <th class="form-group required" style="width:10%;padding-left:20px">Cash Receiveid </th>
+                            <th class="form-group required" style="width:10%;padding-left:20px">Balance        </th>
+                            <th class="form-group required" style="width:10%;padding-left:20px">Total Oustanding</th>
+                          </tr>
+                          <div class="row">
+                              <tr class="clonetr">
+                                <td style="width:15%;">
+                                  <div class="col-sm-12">
+                                    <input type="number" class="form-control" placeholder="₹" id="grand_total"name="grand_total[]" required />
+                                  </div>
+                                </td>
+                                <td style="width:10%;">
 
-                    </div>
+                                    <div class="col-sm-12">
+                                      <input type="number" class="form-control" placeholder="₹" id="cash_received" name="cash_received[]" required />
+                                    </div>
+                                  </td>
+                                  <td style="width:15%;">
+
+                                    <div class="col-sm-12">
+                                      <input type="number" class="form-control" placeholder="₹" id="balance" name="balance[]" required />
+                                    </div>
+                                  </td>
+                                  <td style="width:15%;">
+
+                                    <div class="col-sm-15">
+                                      <input type="number" class="form-control" placeholder="₹" id="total_outstanding" name="total_outstanding" required />
+                                    </div>
+                                  </td>
+                              </tr>
+                          </div>  
+                        </div>
+                        {{-- <td style="width:10%;">
+                          <div class="col-sm-12">
+                            <button type="remove" class="btn btn-danger deleteButton btn-sm btn-icon-text ">
+                              <i class="mdi mdi-delete"></i>
+                            </button>
+                          </div>
+                        </td> --}}
+                     
                   </div>
                 </table>
 
