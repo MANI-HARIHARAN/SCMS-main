@@ -20,6 +20,7 @@ class purchaseOrder extends Model
         'qty',
         'gst',
         'mrp',
+        'gst',
         'wrate',
         'rrate',
         'orate',

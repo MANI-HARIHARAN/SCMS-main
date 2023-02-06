@@ -125,9 +125,9 @@
                           </div>
 
                         </td>
-                        <td style="width:10%;">
+                        <td style="width:15%;">
 
-                          <div class="col-sm-15">
+                          <div class="col-sm-12">
                             <select class="form-control" name="uom[]" required>
                               <option disabled>select</option>
                               <option value="kgs">kgs</option>
@@ -139,27 +139,25 @@
                           </div>
 
                         </td>
-                        <td style="width:10%;">
+                        <td style="width:15%;">
 
 
-                          <div class="col-sm-15">
+                          <div class="col-sm-12">
                             <input type="number" class="form-control" placeholder="₹" id="qty"name="qty[]" required />
                           </div>
 
                         </td>
-                        <td style="width:10%;">
-                          <div class="col-sm-15">
+                        <td style="width:15%;">
+                          <div class="col-sm-12">
                             <input type="number" class="form-control" placeholder="₹" name="gst[]" required />
                           </div>
                         </td>
-                        <td style="width:10%;">
-
-                          <div class="col-sm-15">
+                        <td style="width:15%;">
+                          <div class="col-sm-12">
                             <input type="number" class="form-control" placeholder="₹" id="rate" name="rate[]" required />
                           </div>
                         </td>
-                        <td style="width:10%;">
-
+                        <td style="width:15%;">
                           <div class="col-sm-15">
                             <input type="number" class="form-control" placeholder="₹" id="product_total" name="product_total[]" required />
                           </div>
@@ -173,12 +171,13 @@
                         </td>
                       </tr>
                     </div>    
+                    
                         <div class="row">
                           <tr>
                             <th class="form-group required" style="width:10%;padding-left:20px">Grand Total    </th>
                             <th class="form-group required" style="width:10%;padding-left:20px">Cash Receiveid </th>
                             <th class="form-group required" style="width:10%;padding-left:20px">Balance        </th>
-                            <th class="form-group required" style="width:10%;padding-left:20px">Total Oustanding</th>
+                            <th class="form-group required" style="width:15%;padding-left:20px">Total Oustanding</th>
                           </tr>
                           <div class="row">
                               <tr class="clonetr">
