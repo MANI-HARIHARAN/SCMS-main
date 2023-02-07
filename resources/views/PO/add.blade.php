@@ -152,8 +152,6 @@
                         <td style="width:10%;">
                           <div class="col-sm-12">
                             <input type="number" class="form-control" placeholder="%" name="po_gst[]" required />
-<<<<<<< HEAD
-=======
                           </div>
                         </td>
                         <td style="width:10%;">
@@ -616,14 +614,13 @@
 
 
                           <div class="col-sm-12">
-                            <input type="number" class="form-control" placeholder="₹" name="po_qty[]" required />
+                            <input type="number" class="form-control" placeholder="₹" name="po_qty[]"  />
                           </div>
 
                         </td>
                         <td style="width:10%;">
                           <div class="col-sm-12">
-                            <input type="number" class="form-control" placeholder="%" name="po_gst[]" required />
->>>>>>> f9e41c9b0e6d2d5a6bb96d9f6cc8249398e77503
+                            <input type="number" class="form-control" placeholder="%" name="po_gst[]"  />
                           </div>
                         </td>
                         <td style="width:10%;">
@@ -848,14 +845,8 @@
                         </td>
                         <td style="width:10%;">
 
-                          {{-- <div class="col-sm-12">
-                            <input type="number" class="form-control" placeholder="₹" name="po_orate[]"/>
-                          </div>
-                        </td>
-                        <td style="width:10%;"> --}}
                           <div class="col-sm-12">
-                            <input type="number" class="form-control" placeholder="₹" name="orate[]" required />
-                            <input type="number" class="form-control" placeholder="₹" name="po_orate[]" required />
+                            <input type="number" class="form-control" placeholder="₹" name="po_orate[]"  />
                           </div>
                         </td>
                         <!-- <td style="width:10%;">

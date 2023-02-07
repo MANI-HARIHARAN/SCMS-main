@@ -82,19 +82,19 @@
 
                 <table id="addrow" width="100%">
 
-                  <div class="row card-body">
+                  {{-- <div class="row card-body">
                     <button style="width:15%;margin-bottom:30px" type="addrowdata" class="btn-info btn-sm btn-icon-text btn btn-success addButton offset-1">
                       <i class="mdi mdi-plus-circle"></i>Add Order
                     </button>
-                  </div>
+                  </div> --}}
                   <div class="row">
                     <tr>
                       <th class="required" style="width:15%;padding-left:25px">Brands</th>
                       <th class="form-group required" style="width:15%;padding-left:25px">Products</th>
                       <th class="form-group required" style="width:10%;padding-left:20px">UOM</th>
-                      <th class="form-group required" style="width:10%;padding-left:20px">qty</th>
-                      <th class="form-group required" style="width:10%;padding-left:20px">gst</th>
-                      <th class="form-group required" style="width:10%;padding-left:20px">mrp</th>
+                      <th class="form-group required" style="width:10%;padding-left:20px">Qty</th>
+                      <th class="form-group required" style="width:10%;padding-left:20px">GST</th>
+                      <th class="form-group required" style="width:10%;padding-left:20px">Rate</th>
                       <th class="form-group required" style="width:10%;padding-left:20px">Product Total</th>
                       {{-- <th class="form-group required" style="width:10%;padding-left:20px">Grand Total</th> --}}
                       {{-- <th class="form-group required" style="width:10%;padding-left:20px">Cash Receiveid</th> --}}
@@ -102,40 +102,40 @@
                       {{-- <th class="form-group required" style="width:10%;padding-left:20px">Total Oustanding</th> --}}
                     </tr>
                     <div class="row">
+                      <datalist id="option_brand">
+                        @foreach($brands as $brands)
+                          <option value="{{$brands->name}}">{{$brands->name}}</option>
+                        @endforeach
+                      </datalist>
+                      <datalist id="option_product">
+                        @foreach($products as $products)
+                          <option value="{{$products->name}}">{{$products->name}}</option>
+                        @endforeach
+                      </datalist>
+                      <datalist id="option_uom">
+                                <option disabled>Select</option>
+                                <option value="kgs">kgs</option>
+                                <option value="unit">unit</option>
+                                <option value="dozen">dozen</option>
+                                <option value="numbers">numbers</option>
+                                <option value="pieces">pieces</option>   
+                      </datalist>
                       <tr class="clonetr">
                         <td style="width:15%;">
                           <div class="col-sm-12">
-                            <select class="form-select" name="brand_name[]" required>
-                              <option disabled>select</option>
-                              @foreach($brands as $brands)
-                              <option value="{{$brands->name}}">{{$brands->name}}</option>
-                              @endforeach
-                            </select>
+                              <input type="text" class="form-control"  list="option_brand" name="brand_name[]" id="inputField" required/>
+                          </div>
+                        </td>
+
+                        <td style="width:10%;">
+                          <div class="col-sm-12"> 
+                           <input type="text" class="form-control" list="option_product" name="product_name[]" id="inputField" required/>                        
                           </div>
                         </td>
                         <td style="width:10%;">
 
                           <div class="col-sm-12">
-                            <select class="form-select" name="product_name[]" required>
-                              <option disabled>select</option>
-                              @foreach($products as $products)
-                              <option value="{{$products->name}}">{{$products->name}}</option>
-                              @endforeach
-                            </select>
-                          </div>
-
-                        </td>
-                        <td style="width:15%;">
-
-                          <div class="col-sm-12">
-                            <select class="form-control" name="uom[]" required>
-                              <option disabled>select</option>
-                              <option value="kgs">kgs</option>
-                              <option value="unit">unit</option>
-                              <option value="dozen">dozen</option>
-                              <option value="numbers">numbers</option>
-                              <option value="pieces">pieces</option>
-                            </select>
+                            <input type="text" class="form-control" list="option_uom" name="uom[]" id="inputField" required/>    
                           </div>
 
                         </td>
@@ -171,7 +171,261 @@
                         </td>
                       </tr>
                     </div>    
-                    
+                    <tr class="clonetr">
+                      <td style="width:15%;">
+                        <div class="col-sm-12">
+                            <input type="text" class="form-control"  list="option_brand" name="brand_name[]" id="inputField" />
+                        </div>
+                      </td>
+
+                      <td style="width:10%;">
+                        <div class="col-sm-12"> 
+                         <input type="text" class="form-control" list="option_product" name="product_name[]" id="inputField" />                        
+                        </div>
+                      </td>
+                      <td style="width:10%;">
+
+                        <div class="col-sm-12">
+                          <input type="text" class="form-control" list="option_uom" name="uom[]" id="inputField" />    
+                        </div>
+
+                      </td>
+                      <td style="width:15%;">
+
+
+                        <div class="col-sm-12">
+                          <input type="number" class="form-control" placeholder="₹" id="qty"name="qty[]"  />
+                        </div>
+
+                      </td>
+                      <td style="width:15%;">
+                        <div class="col-sm-12">
+                          <input type="number" class="form-control" placeholder="₹" name="gst[]"  />
+                        </div>
+                      </td>
+                      <td style="width:15%;">
+                        <div class="col-sm-12">
+                          <input type="number" class="form-control" placeholder="₹" id="rate" name="rate[]"  />
+                        </div>
+                      </td>
+                      <td style="width:15%;">
+                        <div class="col-sm-15">
+                          <input type="number" class="form-control" placeholder="₹" id="product_total" name="product_total[]"  />
+                        </div>
+                      </td>
+                      <td style="width:10%;">
+                        <div class="col-sm-12">
+                          <button type="remove" class="btn btn-danger deleteButton btn-sm btn-icon-text ">
+                            <i class="mdi mdi-delete"></i>
+                          </button>
+                        </div>
+                      </td>
+                    </tr>
+                  </div>    
+                  <tr class="clonetr">
+                    <td style="width:15%;">
+                      <div class="col-sm-12">
+                          <input type="text" class="form-control"  list="option_brand" name="brand_name[]" id="inputField" />
+                      </div>
+                    </td>
+
+                    <td style="width:10%;">
+                      <div class="col-sm-12"> 
+                       <input type="text" class="form-control" list="option_product" name="product_name[]" id="inputField" />                        
+                      </div>
+                    </td>
+                    <td style="width:10%;">
+
+                      <div class="col-sm-12">
+                        <input type="text" class="form-control" list="option_uom" name="uom[]" id="inputField" />    
+                      </div>
+
+                    </td>
+                    <td style="width:15%;">
+
+
+                      <div class="col-sm-12">
+                        <input type="number" class="form-control" placeholder="₹" id="qty"name="qty[]"  />
+                      </div>
+
+                    </td>
+                    <td style="width:15%;">
+                      <div class="col-sm-12">
+                        <input type="number" class="form-control" placeholder="₹" name="gst[]"  />
+                      </div>
+                    </td>
+                    <td style="width:15%;">
+                      <div class="col-sm-12">
+                        <input type="number" class="form-control" placeholder="₹" id="rate" name="rate[]"  />
+                      </div>
+                    </td>
+                    <td style="width:15%;">
+                      <div class="col-sm-15">
+                        <input type="number" class="form-control" placeholder="₹" id="product_total" name="product_total[]"  />
+                      </div>
+                    </td>
+                    <td style="width:10%;">
+                      <div class="col-sm-12">
+                        <button type="remove" class="btn btn-danger deleteButton btn-sm btn-icon-text ">
+                          <i class="mdi mdi-delete"></i>
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+                </div>    
+                <tr class="clonetr">
+                  <td style="width:15%;">
+                    <div class="col-sm-12">
+                        <input type="text" class="form-control"  list="option_brand" name="brand_name[]" id="inputField" />
+                    </div>
+                  </td>
+
+                  <td style="width:10%;">
+                    <div class="col-sm-12"> 
+                     <input type="text" class="form-control" list="option_product" name="product_name[]" id="inputField" />                        
+                    </div>
+                  </td>
+                  <td style="width:10%;">
+
+                    <div class="col-sm-12">
+                      <input type="text" class="form-control" list="option_uom" name="uom[]" id="inputField" />    
+                    </div>
+
+                  </td>
+                  <td style="width:15%;">
+
+
+                    <div class="col-sm-12">
+                      <input type="number" class="form-control" placeholder="₹" id="qty"name="qty[]"  />
+                    </div>
+
+                  </td>
+                  <td style="width:15%;">
+                    <div class="col-sm-12">
+                      <input type="number" class="form-control" placeholder="₹" name="gst[]"  />
+                    </div>
+                  </td>
+                  <td style="width:15%;">
+                    <div class="col-sm-12">
+                      <input type="number" class="form-control" placeholder="₹" id="rate" name="rate[]"  />
+                    </div>
+                  </td>
+                  <td style="width:15%;">
+                    <div class="col-sm-15">
+                      <input type="number" class="form-control" placeholder="₹" id="product_total" name="product_total[]"  />
+                    </div>
+                  </td>
+                  <td style="width:10%;">
+                    <div class="col-sm-12">
+                      <button type="remove" class="btn btn-danger deleteButton btn-sm btn-icon-text ">
+                        <i class="mdi mdi-delete"></i>
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+              </div>    
+              <tr class="clonetr">
+                <td style="width:15%;">
+                  <div class="col-sm-12">
+                      <input type="text" class="form-control"  list="option_brand" name="brand_name[]" id="inputField" />
+                  </div>
+                </td>
+
+                <td style="width:10%;">
+                  <div class="col-sm-12"> 
+                   <input type="text" class="form-control" list="option_product" name="product_name[]" id="inputField" />                        
+                  </div>
+                </td>
+                <td style="width:10%;">
+
+                  <div class="col-sm-12">
+                    <input type="text" class="form-control" list="option_uom" name="uom[]" id="inputField" />    
+                  </div>
+
+                </td>
+                <td style="width:15%;">
+
+
+                  <div class="col-sm-12">
+                    <input type="number" class="form-control" placeholder="₹" id="qty"name="qty[]"  />
+                  </div>
+
+                </td>
+                <td style="width:15%;">
+                  <div class="col-sm-12">
+                    <input type="number" class="form-control" placeholder="₹" name="gst[]"  />
+                  </div>
+                </td>
+                <td style="width:15%;">
+                  <div class="col-sm-12">
+                    <input type="number" class="form-control" placeholder="₹" id="rate" name="rate[]"  />
+                  </div>
+                </td>
+                <td style="width:15%;">
+                  <div class="col-sm-15">
+                    <input type="number" class="form-control" placeholder="₹" id="product_total" name="product_total[]"  />
+                  </div>
+                </td>
+                <td style="width:10%;">
+                  <div class="col-sm-12">
+                    <button type="remove" class="btn btn-danger deleteButton btn-sm btn-icon-text ">
+                      <i class="mdi mdi-delete"></i>
+                    </button>
+                  </div>
+                </td>
+              </tr>
+            </div>    
+            <tr class="clonetr">
+              <td style="width:15%;">
+                <div class="col-sm-12">
+                    <input type="text" class="form-control"  list="option_brand" name="brand_name[]" id="inputField" />
+                </div>
+              </td>
+
+              <td style="width:10%;">
+                <div class="col-sm-12"> 
+                 <input type="text" class="form-control" list="option_product" name="product_name[]" id="inputField" />                        
+                </div>
+              </td>
+              <td style="width:10%;">
+
+                <div class="col-sm-12">
+                  <input type="text" class="form-control" list="option_uom" name="uom[]" id="inputField" />    
+                </div>
+
+              </td>
+              <td style="width:15%;">
+
+
+                <div class="col-sm-12">
+                  <input type="number" class="form-control" placeholder="₹" id="qty"name="qty[]"  />
+                </div>
+
+              </td>
+              <td style="width:15%;">
+                <div class="col-sm-12">
+                  <input type="number" class="form-control" placeholder="₹" name="gst[]"  />
+                </div>
+              </td>
+              <td style="width:15%;">
+                <div class="col-sm-12">
+                  <input type="number" class="form-control" placeholder="₹" id="rate" name="rate[]"  />
+                </div>
+              </td>
+              <td style="width:15%;">
+                <div class="col-sm-15">
+                  <input type="number" class="form-control" placeholder="₹" id="product_total" name="product_total[]"  />
+                </div>
+              </td>
+              <td style="width:10%;">
+                <div class="col-sm-12">
+                  <button type="remove" class="btn btn-danger deleteButton btn-sm btn-icon-text ">
+                    <i class="mdi mdi-delete"></i>
+                  </button>
+                </div>
+              </td>
+            </tr>
+          </div>    
                         <div class="row">
                           <tr>
                             <th class="form-group required" style="width:10%;padding-left:20px">Grand Total    </th>
@@ -183,19 +437,19 @@
                               <tr class="clonetr">
                                 <td style="width:15%;">
                                   <div class="col-sm-12">
-                                    <input type="number" class="form-control" placeholder="₹" id="grand_total"name="grand_total[]" required />
+                                    <input type="number" class="form-control" placeholder="₹" id="grand_total"name="grand_total" required />
                                   </div>
                                 </td>
                                 <td style="width:10%;">
 
                                     <div class="col-sm-12">
-                                      <input type="number" class="form-control" placeholder="₹" id="cash_received" name="cash_received[]" required />
+                                      <input type="number" class="form-control" placeholder="₹" id="cash_received" name="cash_received" required />
                                     </div>
                                   </td>
                                   <td style="width:15%;">
 
                                     <div class="col-sm-12">
-                                      <input type="number" class="form-control" placeholder="₹" id="balance" name="balance[]" required />
+                                      <input type="number" class="form-control" placeholder="₹" id="balance" name="balance" required />
                                     </div>
                                   </td>
                                   <td style="width:15%;">
@@ -256,7 +510,7 @@
   form.addEventListener("input", function () {
     grand_total.value = product_total.value;
   });
-  form.addEventListener("input", function () {
+    form.addEventListener("input", function () {
     balance.value = grand_total.value-cash_received.value;
   });
 
