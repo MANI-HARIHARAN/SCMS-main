@@ -49,6 +49,7 @@ class PurchaseOrderController extends Controller
         $po_date = $request->input('po_date');
          
         $brands = $request->input('brands');
+       print_r($brands) ;
         $products = $request->input('products');
         $uom = $request->input('po_uom');
         $qty = $request->input('po_qty');
@@ -58,7 +59,7 @@ class PurchaseOrderController extends Controller
         $rrate = $request->input('po_rrate');
         $orate = $request->input('po_orate');
 
-    $BRANCH_array = array();
+    $BRAND_array = array();
     $PRODUCT_array = array();
     $UOM_array = array();
     $QTY_array = array();
@@ -68,8 +69,8 @@ class PurchaseOrderController extends Controller
     $WRATE_array = array();
     $ORATE_array = array();
 
-    foreach ($brands as $BRANCH_obj) {
-       array_push($BRANCH_array, $BRANCH_obj);
+    foreach ($brands as $BRAND_obj) {
+       array_push($BRAND_array, $BRAND_obj);
     }
     foreach ($products as $product_obj) {
        array_push($PRODUCT_array, $product_obj);
@@ -96,7 +97,7 @@ class PurchaseOrderController extends Controller
        array_push($ORATE_array, $orate_obj);
     }
 
-        for ($i = 0;$i < count($BRANCH_array);$i++){
+        for ($i = 0;$i < count($PRODUCT_array);$i++){
             $data[$i] = array(
             'brand_name' => $brands[$i],
             'product_name' => $products[$i],
@@ -108,24 +109,24 @@ class PurchaseOrderController extends Controller
             'rrate' => $rrate[$i],
             'orate' => $orate[$i],
 
-            'bill_date' => $date,
+            'date' => $date,
             'bill_type' => $bill_type,
             'po_no' => $po_no,
             'company_name' => ucwords($company_name),
             'po_date' => $po_date,
 
-            'product_total' => $request->po_number,
-            'grand_total' => $request->po_number,
-            'created_by' => $request->po_number,
+            'product_total' => $mrp[$i]+($mrp[$i]*($gst[$i]/100)),
+            'grand_total' =>$qty[$i]*$mrp[$i]+($mrp[$i]*($gst[$i]/100)),
+            'created_by' => "admin"
             );
            
-            //print_r($data[$i]);
-            DB::table('purchase_orders')->insert($data[$i]);
+           // print_r($data[$i]);
+           DB::table('purchase_orders')->insert($data[$i]);
         }
+        //print_r($brands) ; 
+     //echo "insert sucessfully";
         
-        echo "insert sucessfully";
-        
-       // return redirect('/customerlist')->with('useradd', 'User Added Successfully');
+      return redirect('/polist')->with('useradd', 'User Added Successfully');
     }
 
     /**
@@ -151,9 +152,12 @@ class PurchaseOrderController extends Controller
      * @param  \App\Models\purchaseOrder  $purchaseOrder
      * @return \Illuminate\Http\Response
      */
-    public function edit(purchaseOrder $purchaseOrder)
-    {
-        //
+    public function edit($id)
+    {   
+        $brands = brands::select('name')->get();
+        $products = products::select('name')->get();
+        $users=purchaseOrder::where('id',$id)->get();
+        return view('PO.Update',compact('brands','products','users'));
     }
 
     /**
@@ -163,9 +167,32 @@ class PurchaseOrderController extends Controller
      * @param  \App\Models\purchaseOrder  $purchaseOrder
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, purchaseOrder $purchaseOrder)
+    public function update(Request $request)
     {
-        //
+        $id = $request->input('id');
+        purchaseOrder::where('id', $id)
+         ->update(
+            [
+                'bill_date'=>$request->input('edit_date'),
+                'bill_type'=>$request->input('edit_bill_type'),
+                'po_no'=>$request->input('edit_po_number'),
+                'company_name'=> ucwords($request->input('edit_company_name')),
+                'po_date'=>$request->input('edit_po_date'),
+                'brand_name'=> $request->input('edit_brands'),
+                'product_name'=> $request->input('edit_products'),
+                'uom'=> $request->input('edit_po_uom'),
+                'qty'=> $request->input('edit_po_qty'),
+                'gst'=> $request->input('edit_po_gst'),
+                'mrp'=> $request->input('edit_po_mrp'),
+                'wrate'=> $request->input('edit_po_wrate'),
+                'rrate'=> $request->input('edit_po_rrate'),
+                'orate'=> $request->input('edit_po_orate'),
+
+                'product_total'=>  $request->input('edit_po_mrp')+($request->input('edit_po_mrp')*($request->input('edit_po_gst')/100)),
+                'grand_total'=> $request->input('edit_po_qty')*($request->input('edit_po_mrp')+($request->input('edit_po_mrp')*($request->input('edit_po_gst')/100))),
+                'created_by'=>"admin",
+            ]);
+        return redirect('/polist')->with('userupdate', 'Updated successfully');
     }
 
     /**
@@ -174,8 +201,9 @@ class PurchaseOrderController extends Controller
      * @param  \App\Models\purchaseOrder  $purchaseOrder
      * @return \Illuminate\Http\Response
      */
-    public function destroy(purchaseOrder $purchaseOrder)
+    public function destroy($id)
     {
-        //
+        purchaseOrder::where('id',$id)->delete();
+        return redirect('/polist')->with('orgdelete','Delete successfully');
     }
 }

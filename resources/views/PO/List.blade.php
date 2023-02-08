@@ -36,6 +36,7 @@
                     {{ session('userupdate') }}
                     </div>
                     @endif
+
               <!-- popup toast success end-->
             <div class="col-lg-12 grid-margin stretch-card">
               <div class="card">
@@ -66,8 +67,8 @@
                         <td>{{$value->company_name}}</td>
                         <td>{{$value->po_no}}</td>
                         <td>
-                          <a href="/routeupdate{{$value->id}}" class="mdi mdi-lead-pencil"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                          <a class="mdi mdi-delete" data-href="/routedelete/{{$value->id}}"  data-toggle="modal" data-target="#confirm-delete"></a>
+                          <a href="/poupdate{{$value->id}}" class="mdi mdi-lead-pencil"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                          <a class="mdi mdi-delete" data-href="/podelete/{{$value->id}}"  data-toggle="modal" data-target="#confirm-delete"></a>
                         </td>      
                       </tr>
                     @endforeach
