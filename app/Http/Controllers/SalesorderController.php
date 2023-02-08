@@ -8,6 +8,7 @@ use App\Models\products;
 use App\Models\customer;
 use App\Models\route;
 use Illuminate\Http\Request;
+use DB;
 
 class SalesorderController extends Controller
 {
@@ -41,47 +42,99 @@ class SalesorderController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
-     */
+    //  */
+
     public function store(Request $request)
     {
-        $request->validate([
-            'date'=>'required',
-            'route'=>'required',
-            'company_name'=>'required',
-            'bill_type'=>'required',
-            'brand_name'=>'required',
-            'product_name'=>'required',
-            'uom'=>'required',
-            'qty'=>'required',
-            'gst'=>'required',
-            'rate'=>'required',
-            'product_total'=>'required',
-            'grand_total'=>'required',
-            'cash_received'=>'required',
-            'balance'=>'required',
-            'total_outstanding'=>'required',
+        $date = $request->input('date');
+        $route = $request->input('route');
+        $company_name = $request->input('company_name');
+        $bill_type = $request->input('bill_type');
     
-        ]);
-        $salesorder = new salesorder;
-        $salesorder->date = $request->date;
-        $salesorder->route = $request->route;
-        $salesorder->company_name = $request->company_name;
-        $salesorder->bill_type = $request->bill_type;
-        $salesorder->brand_name = $request->brand_name;
-        $salesorder->product_name = $request->product_name;
-        $salesorder->uom = $request->uom;
-        $salesorder->qty = $request->qty;
-        $salesorder->gst = $request->gst;
-        $salesorder->rate = $request->rate;
-        $salesorder->product_total = $request->product_total;
-        $salesorder->grand_total = $request->grand_total;
-        $salesorder->cash_received = $request->cash_received;
-        $salesorder->balance = $request->balance;
-        $salesorder->total_outstanding = $request->total_outstanding;
-        $salesorder->save();
-        return redirect('/sales');
+        $brand_name = $request->input('brand_name');
+        $product_name = $request->input('product_name');
+        $uom = $request->input('uom');
+        $qty = $request->input('qty');
+        $gst = $request->input('gst');
+        $rate = $request->input('rate');
+        $product_total = $request->input('product_total');
+        $grand_total= $request->input('grand_total');
+        $cash_received = $request->input('cash_received');
+        $balance =$request->input('balance');
+        $total_outstanding = $request->input('total_outstanding');
+           
+        $brand_name_array = [];
+        $product_name_array = [];
+        $uom_array = [];
+        $qty_array = [];
+        $gst_array = [];
+        $rate_array = [];
+        $product_total_array = [];
+        
+        // print(count($brand_name));
+        for($j=0;$j<count($brand_name);$j++)
+        {
+            if(isset($brand_name[$j]))
+                array_push($brand_name_array,$brand_name[$j]);
+            
+            if(isset($product_name[$j]))
+                array_push($product_name_array,$product_name[$j]);
+            
+            if(isset($uom[$j]))
+                array_push($uom_array,$uom[$j]);
+            
+            if(isset($qty[$j]))
+                array_push($qty_array,$qty[$j]);
+            if(isset($gst[$j]))
+                array_push($gst_array,$gst[$j]);    
+            
+            if(isset($rate[$j]))
+                array_push($rate_array,$rate[$j]);
+            
+            if(isset($product_total[$j]))
+                array_push($product_total_array,$product_total[$j]);
+            
+            
+                    
+            //print_r($stsArr[$j]."<br>");
+        }
+        // print_r($product_total_array);
+        // print_r($rate_array);
+        // print_r($gst_array);
+        // print_r($qty_array);
+        // print_r($brand_name_array);
+        // print_r($uom_array);
+        // print_r($product_name_array);
+    // print_r($product_name_array);
+   
+     for ($i = 0; $i < count($brand_name_array); $i++) {
+        $data[$i] = array(
+            'brand_name' => $brand_name[$i],
+            'product_name' => $product_name[$i],
+            'uom' => $uom[$i],
+            'qty' => $qty[$i],
+            'gst' => $gst[$i],
+            'rate' => $rate[$i],
+            'product_total' => $product_total[$i],
+
+
+            'grand_total' => $grand_total,
+            'cash_received' => $cash_received,
+            'balance' => $balance,
+            'total_outstanding' => $total_outstanding,
+            'date' => $date,
+            'route' => $route,
+            'bill_type' => $bill_type,
+            'company_name' => $company_name,
+
+            //'created_by' => 'Admin',
+        );
+        // print_r($data[$i]);
+         DB::table('salesorders')->insert($data[$i]);
     }
 
+    return redirect('/sales');
+}   
     /**
      * Display the specified resource.
      *

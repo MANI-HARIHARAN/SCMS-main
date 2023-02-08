@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('salesorders', function (Blueprint $table) {
             $table->id();
-            $table->string('date');
+            $table->date('date');
             $table->string('route');
             $table->string('company_name');
             $table->string('bill_type');

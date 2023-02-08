@@ -108,7 +108,7 @@ class PurchaseOrderController extends Controller
             'rrate' => $rrate[$i],
             'orate' => $orate[$i],
 
-            'bill_date' => $date,
+            'date' => $date,
             'bill_type' => $bill_type,
             'po_no' => $po_no,
             'company_name' => ucwords($company_name),
