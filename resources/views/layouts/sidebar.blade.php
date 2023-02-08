@@ -45,17 +45,23 @@
               </a>
               <div class="collapse" id="ui-basic">
                 <ul class="nav flex-column sub-menu">
-                  <li class="nav-item"> <a class="nav-link" href="/polist">Purchase Order</a></li>
+                  <li class="nav-item"> <a class="nav-link" href="/addpo">Purchase Order</a></li>
+                  <li class="nav-item"> <a class="nav-link" href="/polist">Typography</a></li>
+                </ul>
+              </div>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" data-bs-toggle="collapse" href="#basic" aria-expanded="false" aria-controls="basic">
+                <span class="menu-title">Sales Management</span>
+                <i class="menu-arrow"></i>
+                <i class="mdi mdi-store menu-icon"></i>
+              </a>
+              <div class="collapse" id="basic">
+                <ul class="nav flex-column sub-menu">
+                  <li class="nav-item"> <a class="nav-link" href="/sales">Order list</a></li>
                   <li class="nav-item"> <a class="nav-link" href="/sales">Sales Order</a></li>
                 </ul>
               </div>
             </li>
-            <!-- <li class="nav-item">
-              <a class="nav-link" href="/sales">
-                <span class="menu-title">Sales Order</span>
-                <i class="mdi mdi-store menu-icon"></i>
-              </a>
-            </li> -->
-           
           </ul>
         </nav>
