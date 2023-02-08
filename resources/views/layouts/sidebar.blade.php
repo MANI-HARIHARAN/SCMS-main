@@ -45,8 +45,8 @@
               </a>
               <div class="collapse" id="ui-basic">
                 <ul class="nav flex-column sub-menu">
-                  <li class="nav-item"> <a class="nav-link" href="/addpo">Purchase Order</a></li>
-                  <li class="nav-item"> <a class="nav-link" href="/polist">Typography</a></li>
+                  <li class="nav-item"> <a class="nav-link" href="/polist">Purchase Order</a></li>
+                  <li class="nav-item"> <a class="nav-link" href="/solist">Sales Order</a></li>
                 </ul>
               </div>
             </li>

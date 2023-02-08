@@ -39,7 +39,7 @@
                       <div class="form-group row">
                         <label class="required">Bill Type</label>
                         <div class="col-sm-8">
-                          <select class="form-control" name="bill_type" >
+                          <select class="form-select" name="bill_type" >
                             <option disabled>select</option>
                             <option value="Paid">Paid</option>
                             <option value="Topay">Topay</option>
