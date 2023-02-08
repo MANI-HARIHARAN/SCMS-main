@@ -90,8 +90,11 @@ Route::get('/customerdelete/{id}',[CustomerController::class,'destroy']);
 // =================================PO==================================================================
 
 Route::get('/addpo',[PurchaseOrderController::class,'index']);
-Route::post('/po_insert',[PurchaseOrderController::class,'store']);
+Route::post('/polist',[PurchaseOrderController::class,'store']);
 Route::get('/polist',[PurchaseOrderController::class,'show']);
+Route::get('/poupdate{po_no}',[PurchaseOrderController::class,'edit']);
+Route::post('/poupdate',[PurchaseOrderController::class,'update']);
+Route::get('/podelete/{po_no}',[PurchaseOrderController::class,'destroy']);
 
 //======================================SO================================================================
 

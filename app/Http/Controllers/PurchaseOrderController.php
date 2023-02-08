@@ -58,45 +58,39 @@ class PurchaseOrderController extends Controller
         $rrate = $request->input('po_rrate');
         $orate = $request->input('po_orate');
 
-    $BRANCH_array = array();
-    $PRODUCT_array = array();
-    $UOM_array = array();
-    $QTY_array = array();
-    $MRP_array = array();
-    $GST_array = array();
-    $RRATE_array = array();
-    $WRATE_array = array();
-    $ORATE_array = array();
+    $BRAND_array = [];
+    $PRODUCT_array = [];
+    $UOM_array = [];
+    $QTY_array = [];
+    $MRP_array = [];
+    $GST_array = [];
+    $RRATE_array = [];
+    $WRATE_array = [];
+    $ORATE_array = [];
 
-    foreach ($brands as $BRANCH_obj) {
-       array_push($BRANCH_array, $BRANCH_obj);
-    }
-    foreach ($products as $product_obj) {
-       array_push($PRODUCT_array, $product_obj);
-    }
-    foreach ($uom as $uom_obj) {
-       array_push($UOM_array, $uom_obj);
-    } 
-    foreach ($qty as $qty_obj) {
-       array_push($QTY_array, $qty_obj);
-    }  
-    foreach ($mrp as $mrp_obj) {
-       array_push($MRP_array, $mrp_obj);
-    } 
-    foreach ($gst as $gst_obj) {
-       array_push($GST_array, $gst_obj);
-    } 
-    foreach ($rrate as $rrate_obj) {
-       array_push($RRATE_array, $rrate_obj);
-    }
-    foreach ($wrate as $wrate_obj) {
-       array_push($WRATE_array, $wrate_obj);
-    }  
-    foreach ($orate as $orate_obj) {
-       array_push($ORATE_array, $orate_obj);
+    for($j=0;$j<count($brands);$j++)
+    {
+        if(isset($brands[$j]))
+            array_push($BRAND_array,$brands[$j]);
+        if(isset($products[$j]))
+            array_push($PRODUCT_array,$products[$j]);
+        if(isset($uom[$j]))
+            array_push($UOM_array,$uom[$j]);
+        if(isset($qty[$j]))
+            array_push($QTY_array,$qty[$j]);
+        if(isset($mrp[$j]))
+            array_push($MRP_array,$mrp[$j]);
+        if(isset($gst[$j]))
+            array_push($GST_array,$gst[$j]);
+        if(isset($wrate[$j]))
+            array_push($RRATE_array,$wrate[$j]);
+        if(isset($rrate[$j]))
+            array_push($WRATE_array,$rrate[$j]);
+        if(isset($orate[$j]))
+            array_push($ORATE_array,$orate[$j]);
     }
 
-        for ($i = 0;$i < count($BRANCH_array);$i++){
+        for ($i = 0;$i < count($PRODUCT_array);$i++){
             $data[$i] = array(
             'brand_name' => $brands[$i],
             'product_name' => $products[$i],
@@ -114,18 +108,18 @@ class PurchaseOrderController extends Controller
             'company_name' => ucwords($company_name),
             'po_date' => $po_date,
 
-            'product_total' => $request->po_number,
-            'grand_total' => $request->po_number,
-            'created_by' => $request->po_number,
+            'product_total' => $mrp[$i]+($mrp[$i]*($gst[$i]/100)),
+            'grand_total' =>$qty[$i]*$mrp[$i]+($mrp[$i]*($gst[$i]/100)),
+            'created_by' => "admin"
             );
            
-            //print_r($data[$i]);
-            DB::table('purchase_orders')->insert($data[$i]);
+           // print_r($data[$i]);
+           DB::table('purchase_orders')->insert($data[$i]);
         }
+        //print_r($brands) ; 
+     //echo "insert sucessfully";
         
-        echo "insert sucessfully";
-        
-       // return redirect('/customerlist')->with('useradd', 'User Added Successfully');
+      return redirect('/polist')->with('useradd', 'PO Added Successfully');
     }
 
     /**
@@ -137,12 +131,8 @@ class PurchaseOrderController extends Controller
     public function show(purchaseOrder $purchaseOrder)
     {
         $data=purchaseOrder::paginate(10);
-        // $group=DB::select('SELECT *,po_no,bill_date,bill_type,company_name,po_date, COUNT(*) as total FROM purchase_orders GROUP BY po_no');
-        // $group = DB::table('purchase_orders')
-        // ->select('*','po_no','bill_date','bill_type','company_name','po_date')
-        // ->groupBy('po_no')
-        // ->get();
-        return view('PO.List',['data'=>$data]);
+        $group=DB::select('SELECT COUNT(id) as total,po_no FROM purchase_orders GROUP BY po_no');
+        return view('PO.List',['data'=>$data],['group'=>$group]);
     }
 
     /**
@@ -151,9 +141,20 @@ class PurchaseOrderController extends Controller
      * @param  \App\Models\purchaseOrder  $purchaseOrder
      * @return \Illuminate\Http\Response
      */
-    public function edit(purchaseOrder $purchaseOrder)
-    {
-        //
+    public function edit($po_no)
+    {   
+       // $id = DB::select('SELECT id FROM purchase_orders WHERE po_no=?',[$po_no]);
+        $brands = brands::select('*')->get();
+        $products = products::select('*')->get();
+        $users=purchaseOrder::where('po_no',$po_no)->get();
+        $date=DB::select('SELECT date  FROM purchase_orders WHERE po_no=? GROUP BY po_no', [$po_no]);
+        $potype=DB::select('SELECT bill_type,po_no FROM purchase_orders  WHERE po_no=? GROUP BY po_no', [$po_no]);
+        $pono=DB::select('SELECT po_no FROM purchase_orders  WHERE po_no=? GROUP BY po_no', [$po_no]);
+        $podate=DB::select('SELECT po_date,po_no FROM purchase_orders  WHERE po_no=? GROUP BY po_no', [$po_no]);
+        $company=DB::select('SELECT company_name,po_no FROM purchase_orders  WHERE po_no=? GROUP BY po_no', [$po_no]);
+        $table=purchaseOrder::where('po_no',$po_no)->get();
+        //print_r($brands);
+        return view('PO.Update',compact('brands','products','users','table','date','potype','pono','podate','company'));
     }
 
     /**
@@ -163,9 +164,107 @@ class PurchaseOrderController extends Controller
      * @param  \App\Models\purchaseOrder  $purchaseOrder
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, purchaseOrder $purchaseOrder)
+    public function update(Request $request)
     {
-        //
+        $id = $request->input('po_no');
+        $tableid = $request->input('id');
+      //  $table=purchaseOrder::where('id',$id)->get();
+        print_r($tableid);
+        // purchaseOrder::where('id', $id)
+        //  ->update(
+        //     [
+        //         'date'=>$request->input('edit_date'),
+        //         'bill_type'=>$request->input('edit_bill_type'),
+        //         'po_no'=>$request->input('edit_po_number'),
+        //         'company_name'=> ucwords($request->input('edit_company_name')),
+        //         'po_date'=>$request->input('edit_po_date'),
+        //         'brand_name'=> $request->input('edit_brands'),
+        //         'product_name'=> $request->input('edit_products'),
+        //         'uom'=> $request->input('edit_po_uom'),
+        //         'qty'=> $request->input('edit_po_qty'),
+        //         'gst'=> $request->input('edit_po_gst'),
+        //         'mrp'=> $request->input('edit_po_mrp'),
+        //         'wrate'=> $request->input('edit_po_wrate'),
+        //         'rrate'=> $request->input('edit_po_rrate'),
+        //         'orate'=> $request->input('edit_po_orate'),
+        //     ]);
+        $date = $request->input('edit_date');
+        $bill_type = $request->input('edit_bill_type');
+        $po_no = $request->input('edit_po_number');
+        $company_name = $request->input('edit_company_name');
+        $po_date = $request->input('edit_po_date');
+         
+        $brands = $request->input('edit_brands');
+        $products = $request->input('edit_products');
+        $uom = $request->input('edit_po_uom');
+        $qty = $request->input('edit_po_qty');
+        $mrp = $request->input('edit_po_mrp');
+        $gst = $request->input('edit_po_gst');
+        $wrate = $request->input('edit_po_wrate');
+        $rrate = $request->input('edit_po_rrate');
+        $orate = $request->input('edit_po_orate');
+
+    $BRAND_array = [];
+    $PRODUCT_array = [];
+    $UOM_array = [];
+    $QTY_array = [];
+    $MRP_array = [];
+    $GST_array = [];
+    $RRATE_array = [];
+    $WRATE_array = [];
+    $ORATE_array = [];
+
+    // for($j=0;$j<count($brands);$j++)
+    // {
+    //     if(isset($brands[$j]))
+    //         array_push($BRAND_array,$brands[$j]);
+    //     if(isset($products[$j]))
+    //         array_push($PRODUCT_array,$products[$j]);
+    //     if(isset($uom[$j]))
+    //         array_push($UOM_array,$uom[$j]);
+    //     if(isset($qty[$j]))
+    //         array_push($QTY_array,$qty[$j]);
+    //     if(isset($mrp[$j]))
+    //         array_push($MRP_array,$mrp[$j]);
+    //     if(isset($gst[$j]))
+    //         array_push($GST_array,$gst[$j]);
+    //     if(isset($wrate[$j]))
+    //         array_push($RRATE_array,$wrate[$j]);
+    //     if(isset($rrate[$j]))
+    //         array_push($WRATE_array,$rrate[$j]);
+    //     if(isset($orate[$j]))
+    //         array_push($ORATE_array,$orate[$j]);
+    // }
+
+    for ($i = 0;$i < count($tableid);$i++){
+        $data[$i] = array(
+        'brand_name' =>$brands[$i],
+        'product_name' =>$products[$i],
+        'uom' => $uom[$i],
+        'qty' => $qty[$i],
+        'mrp' => $mrp[$i],
+        'gst' => $gst[$i],
+        'wrate' =>$wrate[$i],
+        'rrate' =>$rrate[$i],
+        'orate' => $orate[$i],
+
+        'date' => $date,
+        'bill_type' => $bill_type,
+        'po_no' => $po_no,
+        'company_name' => ucwords($company_name),
+        'po_date' => $po_date,
+
+        'product_total' => $mrp[$i]+($mrp[$i]*($gst[$i]/100)),
+        'grand_total' =>$qty[$i]*$mrp[$i]+($mrp[$i]*($gst[$i]/100)),
+        'created_by' => "admin"
+        
+        );
+        DB::table('purchase_orders')->update($data[$i]); 
+       //  print_r($data[$i]);
+        
+    }
+                
+        return redirect('/polist')->with('userupdate', 'Updated successfully');
     }
 
     /**
@@ -174,8 +273,9 @@ class PurchaseOrderController extends Controller
      * @param  \App\Models\purchaseOrder  $purchaseOrder
      * @return \Illuminate\Http\Response
      */
-    public function destroy(purchaseOrder $purchaseOrder)
+    public function destroy($po_no)
     {
-        //
+        purchaseOrder::where('po_no',$po_no)->delete();
+        return redirect('/polist')->with('orgdelete','Delete successfully');
     }
 }

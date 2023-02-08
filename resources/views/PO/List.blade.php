@@ -36,6 +36,7 @@
                     {{ session('userupdate') }}
                     </div>
                     @endif
+
               <!-- popup toast success end-->
             <div class="col-lg-12 grid-margin stretch-card">
               <div class="card">
@@ -46,28 +47,26 @@
                     <thead>
                       <tr class="table-paginate">
                         <th> S.No</th>
-                        <th> Date</th>
+                        <!-- <th> Bill Date</th>
                         <th> PO Number</th>
                         <th> Bill Type</th>
-                        <th> PO Date</th>
-                        <th> Company name</th>
+                        <th> PO Date</th> -->
+                        
                         <th> Bill Count</th>
+                        <th> PO Number</th>
                         <th> Action </th>
                       </tr>
                     </thead>
                     <tbody>
-                    @foreach($data as $key=>$value)
+                    @foreach($group as $key=>$value)
                       <tr>
                         <td>{{$key+1}}</td>
-                        <td>{{$value->bill_date}}</td>
+                        <td>{{$value->total}}</td>
                         <td>{{$value->po_no}}</td>
-                        <td>{{$value->bill_type}}</td>
-                        <td>{{$value->po_date}}</td>
-                        <td>{{$value->company_name}}</td>
-                        <td>{{$value->po_no}}</td>
+                        
                         <td>
-                          <a href="/routeupdate{{$value->id}}" class="mdi mdi-lead-pencil"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                          <a class="mdi mdi-delete" data-href="/routedelete/{{$value->id}}"  data-toggle="modal" data-target="#confirm-delete"></a>
+                          <a href="/poupdate{{$value->po_no}}" class="mdi mdi-lead-pencil"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                          <a class="mdi mdi-delete" data-href="/podelete/{{$value->po_no}}"  data-toggle="modal" data-target="#confirm-delete"></a>
                         </td>      
                       </tr>
                     @endforeach
