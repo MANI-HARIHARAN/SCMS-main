@@ -126,26 +126,20 @@
                               <input type="text" class="form-control"  list="option_brand" name="brand_name[]" id="inputField" required/>
                           </div>
                         </td>
-
                         <td style="width:10%;">
                           <div class="col-sm-12"> 
                            <input type="text" class="form-control" list="option_product" name="product_name[]" id="inputField" required/>                        
                           </div>
                         </td>
                         <td style="width:10%;">
-
                           <div class="col-sm-12">
                             <input type="text" class="form-control" list="option_uom" name="uom[]" id="inputField" required/>    
                           </div>
-
                         </td>
                         <td style="width:15%;">
-
-
-                          <div class="col-sm-12">
-                            <input type="number" class="form-control" placeholder="₹" id="qty"name="qty[]" required />
+                         <div class="col-sm-12">
+                            <input type="number" class="form-control" placeholder="₹" id="qty"name="qty[]"required />
                           </div>
-
                         </td>
                         <td style="width:15%;">
                           <div class="col-sm-12">
@@ -177,26 +171,20 @@
                             <input type="text" class="form-control"  list="option_brand" name="brand_name[]" id="inputField" />
                         </div>
                       </td>
-
                       <td style="width:10%;">
                         <div class="col-sm-12"> 
                          <input type="text" class="form-control" list="option_product" name="product_name[]" id="inputField" />                        
                         </div>
                       </td>
                       <td style="width:10%;">
-
                         <div class="col-sm-12">
                           <input type="text" class="form-control" list="option_uom" name="uom[]" id="inputField" />    
                         </div>
-
                       </td>
                       <td style="width:15%;">
-
-
                         <div class="col-sm-12">
-                          <input type="number" class="form-control" placeholder="₹" id="qty"name="qty[]"  />
+                          <input type="number" class="form-control" placeholder="₹" id="qty"name="qty[]" />
                         </div>
-
                       </td>
                       <td style="width:15%;">
                         <div class="col-sm-12">
@@ -228,26 +216,20 @@
                           <input type="text" class="form-control"  list="option_brand" name="brand_name[]" id="inputField" />
                       </div>
                     </td>
-
                     <td style="width:10%;">
                       <div class="col-sm-12"> 
                        <input type="text" class="form-control" list="option_product" name="product_name[]" id="inputField" />                        
                       </div>
                     </td>
                     <td style="width:10%;">
-
                       <div class="col-sm-12">
                         <input type="text" class="form-control" list="option_uom" name="uom[]" id="inputField" />    
                       </div>
-
                     </td>
                     <td style="width:15%;">
-
-
                       <div class="col-sm-12">
-                        <input type="number" class="form-control" placeholder="₹" id="qty"name="qty[]"  />
+                        <input type="number" class="form-control" placeholder="₹" id="qty"name="qty[]" />
                       </div>
-
                     </td>
                     <td style="width:15%;">
                       <div class="col-sm-12">
@@ -279,7 +261,6 @@
                         <input type="text" class="form-control"  list="option_brand" name="brand_name[]" id="inputField" />
                     </div>
                   </td>
-
                   <td style="width:10%;">
                     <div class="col-sm-12"> 
                      <input type="text" class="form-control" list="option_product" name="product_name[]" id="inputField" />                        
@@ -290,15 +271,11 @@
                     <div class="col-sm-12">
                       <input type="text" class="form-control" list="option_uom" name="uom[]" id="inputField" />    
                     </div>
-
                   </td>
                   <td style="width:15%;">
-
-
                     <div class="col-sm-12">
-                      <input type="number" class="form-control" placeholder="₹" id="qty"name="qty[]"  />
+                      <input type="number" class="form-control" placeholder="₹" id="qty"name="qty[]" />
                     </div>
-
                   </td>
                   <td style="width:15%;">
                     <div class="col-sm-12">
@@ -330,26 +307,20 @@
                       <input type="text" class="form-control"  list="option_brand" name="brand_name[]" id="inputField" />
                   </div>
                 </td>
-
                 <td style="width:10%;">
                   <div class="col-sm-12"> 
                    <input type="text" class="form-control" list="option_product" name="product_name[]" id="inputField" />                        
                   </div>
                 </td>
                 <td style="width:10%;">
-
                   <div class="col-sm-12">
                     <input type="text" class="form-control" list="option_uom" name="uom[]" id="inputField" />    
                   </div>
-
                 </td>
                 <td style="width:15%;">
-
-
                   <div class="col-sm-12">
-                    <input type="number" class="form-control" placeholder="₹" id="qty"name="qty[]"  />
+                    <input type="number" class="form-control" placeholder="₹" id="qty"name="qty[]" />
                   </div>
-
                 </td>
                 <td style="width:15%;">
                   <div class="col-sm-12">
@@ -381,26 +352,20 @@
                     <input type="text" class="form-control"  list="option_brand" name="brand_name[]" id="inputField" />
                 </div>
               </td>
-
               <td style="width:10%;">
                 <div class="col-sm-12"> 
                  <input type="text" class="form-control" list="option_product" name="product_name[]" id="inputField" />                        
                 </div>
               </td>
               <td style="width:10%;">
-
                 <div class="col-sm-12">
                   <input type="text" class="form-control" list="option_uom" name="uom[]" id="inputField" />    
                 </div>
-
               </td>
               <td style="width:15%;">
-
-
                 <div class="col-sm-12">
-                  <input type="number" class="form-control" placeholder="₹" id="qty"name="qty[]"  />
+                  <input type="number" class="form-control" placeholder="₹" id="qty"name="qty[]" />
                 </div>
-
               </td>
               <td style="width:15%;">
                 <div class="col-sm-12">
@@ -441,19 +406,16 @@
                                   </div>
                                 </td>
                                 <td style="width:10%;">
-
                                     <div class="col-sm-12">
                                       <input type="number" class="form-control" placeholder="₹" id="cash_received" name="cash_received" required />
                                     </div>
                                   </td>
                                   <td style="width:15%;">
-
                                     <div class="col-sm-12">
                                       <input type="number" class="form-control" placeholder="₹" id="balance" name="balance" required />
                                     </div>
                                   </td>
                                   <td style="width:15%;">
-
                                     <div class="col-sm-15">
                                       <input type="number" class="form-control" placeholder="₹" id="total_outstanding" name="total_outstanding" required />
                                     </div>
@@ -461,17 +423,8 @@
                               </tr>
                           </div>  
                         </div>
-                        {{-- <td style="width:10%;">
-                          <div class="col-sm-12">
-                            <button type="remove" class="btn btn-danger deleteButton btn-sm btn-icon-text ">
-                              <i class="mdi mdi-delete"></i>
-                            </button>
-                          </div>
-                        </td> --}}
-                     
                   </div>
                 </table>
-
                 <div class="row" style="justify-content:center">
                   <button style="width:10%;margin-top:20px;margin-bottom:15px" type="submit" class="btn-info btn-sm btn-icon-text">
                     Submit
@@ -493,26 +446,28 @@
 <script>
   
   // Get Form Elements
-  var form = document.getElementById("order-entry-form");
-  var qty = document.getElementById("qty");
-  var rate = document.getElementById("rate");
-  var product_total = document.getElementById("product_total");
-  var grand_total = document.getElementById("grand_total");
-  var cash_received = document.getElementById("cash_received");
-  var balance = document.getElementById("balance");
-  var total_outstanding = document.getElementById("total_outstanding");
+
+
+  // var form = document.getElementById("order-entry-form");
+  // var qty = document.getElementById("qty");
+  // var rate = document.getElementById("rate");
+  // var product_total = document.getElementById("product_total");
+  // var grand_total = document.getElementById("grand_total");
+  // var cash_received = document.getElementById("cash_received");
+  // var balance = document.getElementById("balance");
+  // var total_outstanding = document.getElementById("total_outstanding");
   
 
   // Calculate product_total on Input Change
-  form.addEventListener("input", function () {
-    product_total.value = qty.value * rate.value;
-  });
-  form.addEventListener("input", function () {
-    grand_total.value = product_total.value;
-  });
-    form.addEventListener("input", function () {
-    balance.value = grand_total.value-cash_received.value;
-  });
+  // form.addEventListener("input", function () {
+  //   product_total.value = qty.value * rate.value;
+  // });
+  // form.addEventListener("input", function () {
+  //   grand_total.value = product_total.value;
+  // });
+  //   form.addEventListener("input", function () {
+  //   balance.value = grand_total.value-cash_received.value;
+  // });
 
   $(function() {
     $(".addButton").click(function() {
@@ -527,6 +482,42 @@
 
     });
   });
+  $('input[name^="product_total"]').val(0);
+  $('input[name^="qty"],input[name^="rate"]').on('input', function() {
+   let $tr = $(this).closest('tr');
+   let qty = parseFloat($tr.find('input[name^="qty"]').val());
+   let rate = parseFloat($tr.find('input[name^="rate"]').val());
+  
 
+  let product_total = qty * rate;
+   $tr.find('input[name^="product_total"]').val(product_total.toFixed(2));
+
+   let grand_total = 0;
+   $('input[name^="product_total"]').each(function() {
+      grand_total += parseFloat($(this).val());
+   });
+   $('input[name="grand_total"]').val(grand_total.toFixed(2));
+   var cash_received = document.getElementById("cash_received");
+    var balance = document.getElementById("balance");
+    form.addEventListener("input", function () {
+    balance.value = grand_total-cash_received;
+  });
+   
+});
+$('input[name^="total_outstandingl"]').val(0);
+$(document).ready(function(){
+  $('#total_outstanding').val(0);
+  $('#cash_received').on('input', function() {
+    let grand_total = parseFloat($('#grand_total').val());
+    let cash_received = parseFloat($(this).val());
+    let balance = grand_total - cash_received;
+    $('#balance').val(balance.toFixed(2));
+
+    let total_outstanding = parseFloat($('#total_outstanding').val());
+    total_outstanding = balance;
+    $('#total_outstanding').val(total_outstanding.toFixed(2));
+  });
+});
 </script>
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
