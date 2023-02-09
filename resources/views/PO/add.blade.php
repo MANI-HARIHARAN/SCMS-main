@@ -17,7 +17,7 @@
             </h3>
           </div>
           <!-- body content start -->
-          <form class="form-sample" method="POST" action="po_insert" enctype="multipart/form-data">
+          <form class="form-sample" method="POST" action="polist" enctype="multipart/form-data">
             <input type="hidden" name="_token" value="{{ csrf_token() }}">
             @csrf
             <div class="col-lg-12 grid-margin stretch-card">
@@ -31,15 +31,15 @@
                       <div class="form-group row">
                         <label class="required">Date</label>
                         <div class="col-sm-9">
-                          <input type="date" class="form-control" value="<?php echo date("Y-m-d") ?>" name="date" required>
+                          <input type="date" class="form-control" value="<?php echo date("Y-m-d") ?>" name="date" >
                         </div>
                       </div>
                     </div>
-                    <div class="col-md-2">
+                    <div class="col-md-3">
                       <div class="form-group row">
                         <label class="required">Bill Type</label>
                         <div class="col-sm-8">
-                          <select class="form-control" name="bill_type" required>
+                          <select class="form-select" name="bill_type" >
                             <option disabled>select</option>
                             <option value="Paid">Paid</option>
                             <option value="Topay">Topay</option>
@@ -56,21 +56,23 @@
                         </div>
                       </div>
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-md-3">
+                      <div class="form-group row">
+                        <label class="required">PO Date</label>
+                        <div class="col-sm-9">
+                          <input type="date" class="form-control" name="po_date"  />
+                        </div>
+                      </div>
+                    </div>
+                   
+                  </div>
+                  <div class="row">
+                    
+                     <div class="col-md-4">
                       <div class="form-group row">
                         <label class="required">Company Name</label>
                         <div class="col-sm-12">
                           <input type="text" class="form-control" placeholder="@Company name" name="company_name" required />
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="col-md-4">
-                      <div class="form-group row">
-                        <label class="required">PO Date</label>
-                        <div class="col-sm-9">
-                          <input type="Date" class="form-control" name="po_date" required />
                         </div>
                       </div>
                     </div>
@@ -114,12 +116,12 @@
                       @endforeach
                     </datalist>
                     <datalist id="option_uom">
-                              <option disabled>Select</option>
-                              <option value="kgs">kgs</option>
-                              <option value="unit">unit</option>
-                              <option value="dozen">dozen</option>
-                              <option value="numbers">numbers</option>
-                              <option value="pieces">pieces</option>   
+                        <option disabled>Select</option>
+                        <option value="kgs">kgs</option>
+                        <option value="unit">unit</option>
+                        <option value="dozen">dozen</option>
+                        <option value="numbers">numbers</option>
+                        <option value="pieces">pieces</option>   
                     </datalist>
 
                       <tr class="clonetr">
@@ -626,73 +628,6 @@
                         <td style="width:10%;">
 
                           <div class="col-sm-12">
-                            <input type="number" class="form-control" placeholder="₹" name="po_mrp[]" />
-                          </div>
-
-                        </td>
-                        <td style="width:10%;">
-
-                          <div class="col-sm-12">
-                            <input type="number" class="form-control" placeholder="₹" name="po_wrate[]" />
-                          </div>
-                        </td>
-                        <td style="width:10%;">
-
-                          <div class="col-sm-12">
-                            <input type="number" class="form-control" placeholder="₹" name="po_rrate[]" />
-                          </div>
-                        </td>
-                        <td style="width:10%;">
-
-                          <div class="col-sm-12">
-                            <input type="number" class="form-control" placeholder="₹" name="po_orate[]"/>
-                          </div>
-                        </td>
-                        <!-- <td style="width:10%;">
-
-                          <div class="col-sm-12">
-                            <button type="remove" class="btn btn-danger deleteButton btn-sm btn-icon-text ">
-                              <i class="mdi mdi-delete"></i>
-                            </button>
-                          </div>
-                        </td> -->
-                      </tr>
-
-                      <tr class="clonetr">
-                        <td style="width:15%;">
-                          <div class="col-sm-12">
-                              <input type="text" class="form-control"  list="option_brand" name="brands[]" id="inputField" >
-                          </div>
-                        </td>
-
-                        <td style="width:10%;">
-                          <div class="col-sm-12"> 
-                           <input type="text" class="form-control" list="option_product" name="products[]" id="inputField">                        
-                          </div>
-                        </td>
-                        <td style="width:10%;">
-
-                          <div class="col-sm-12">
-                            <input type="text" class="form-control" list="option_uom" name="po_uom[]" id="inputField">    
-                          </div>
-
-                        </td>
-                        <td style="width:10%;">
-
-
-                          <div class="col-sm-12">
-                            <input type="number" class="form-control" placeholder="₹" name="po_qty[]"  />
-                          </div>
-
-                        </td>
-                        <td style="width:10%;">
-                          <div class="col-sm-12">
-                            <input type="number" class="form-control" placeholder="%" name="po_gst[]"  />
-                          </div>
-                        </td>
-                        <td style="width:10%;">
-
-                          <div class="col-sm-12">
                             <input type="number" class="form-control" placeholder="₹" name="po_mrp[]"  />
                           </div>
 
@@ -707,140 +642,6 @@
 
                           <div class="col-sm-12">
                             <input type="number" class="form-control" placeholder="₹" name="po_rrate[]"  />
-                          </div>
-                        </td>
-                        <td style="width:10%;">
-
-                          <div class="col-sm-12">
-                            <input type="number" class="form-control" placeholder="₹" name="po_orate[]"  />
-                          </div>
-                        </td>
-                        <!-- <td style="width:10%;">
-
-                          <div class="col-sm-12">
-                            <button type="remove" class="btn btn-danger deleteButton btn-sm btn-icon-text ">
-                              <i class="mdi mdi-delete"></i>
-                            </button>
-                          </div>
-                        </td> -->
-                      </tr>
-
-                      <tr class="clonetr">
-                        <td style="width:15%;">
-                          <div class="col-sm-12">
-                              <input type="text" class="form-control"  list="option_brand" name="brands[]" id="inputField">
-                          </div>
-                        </td>
-
-                        <td style="width:10%;">
-                          <div class="col-sm-12"> 
-                           <input type="text" class="form-control" list="option_product" name="products[]" id="inputField">                        
-                          </div>
-                        </td>
-                        <td style="width:10%;">
-
-                          <div class="col-sm-12">
-                            <input type="text" class="form-control" list="option_uom" name="po_uom[]" id="inputField">    
-                          </div>
-
-                        </td>
-                        <td style="width:10%;">
-
-
-                          <div class="col-sm-12">
-                            <input type="number" class="form-control" placeholder="₹" name="po_qty[]"  />
-                          </div>
-
-                        </td>
-                        <td style="width:10%;">
-                          <div class="col-sm-12">
-                            <input type="number" class="form-control" placeholder="%" name="po_gst[]"  />
-                          </div>
-                        </td>
-                        <td style="width:10%;">
-
-                          <div class="col-sm-12">
-                            <input type="number" class="form-control" placeholder="₹" name="po_mrp[]"  />
-                          </div>
-
-                        </td>
-                        <td style="width:10%;">
-
-                          <div class="col-sm-12">
-                            <input type="number" class="form-control" placeholder="₹" name="po_wrate[]"  />
-                          </div>
-                        </td>
-                        <td style="width:10%;">
-
-                          <div class="col-sm-12">
-                            <input type="number" class="form-control" placeholder="₹" name="po_rrate[]"  />
-                          </div>
-                        </td>
-                        <td style="width:10%;">
-
-                          <div class="col-sm-12">
-                            <input type="number" class="form-control" placeholder="₹" name="po_orate[]"  />
-                          </div>
-                        </td>
-                        <!-- <td style="width:10%;">
-
-                          <div class="col-sm-12">
-                            <button type="remove" class="btn btn-danger deleteButton btn-sm btn-icon-text ">
-                              <i class="mdi mdi-delete"></i>
-                            </button>
-                          </div>
-                        </td> -->
-                      </tr>
-
-                      <tr class="clonetr">
-                        <td style="width:15%;">
-                          <div class="col-sm-12">
-                              <input type="text" class="form-control"  list="option_brand" name="brands[]" id="inputField">
-                          </div>
-                        </td>
-
-                        <td style="width:10%;">
-                          <div class="col-sm-12"> 
-                           <input type="text" class="form-control" list="option_product" name="products[]" id="inputField">                        
-                          </div>
-                        </td>
-                        <td style="width:10%;">
-
-                          <div class="col-sm-12">
-                            <input type="text" class="form-control" list="option_uom" name="po_uom[]" id="inputField">    
-                          </div>
-
-                        </td>
-                        <td style="width:10%;">
-
-
-                          <div class="col-sm-12">
-                            <input type="number" class="form-control" placeholder="₹" name="po_qty[]" />
-                          </div>
-
-                        </td>
-                        <td style="width:10%;">
-                          <div class="col-sm-12">
-                            <input type="number" class="form-control" placeholder="%" name="po_gst[]" />
-                          </div>
-                        </td>
-                        <td style="width:10%;">
-
-                          <div class="col-sm-12">
-                            <input type="number" class="form-control" placeholder="₹" name="po_mrp[]" />
-                          </div>
-
-                        </td>
-                        <td style="width:10%;">
-
-                          <div class="col-sm-12">
-                            <input type="number" class="form-control" placeholder="₹" name="po_wrate[]" />
-                          </div>
-                        </td>
-                        <td style="width:10%;">
-
-                          <div class="col-sm-12">
-                            <input type="number" class="form-control" placeholder="₹" name="po_rrate[]" />
                           </div>
                         </td>
                         <td style="width:10%;">
@@ -1038,6 +839,20 @@ let inputField = document.getElementById("inputField");
 //   let selectedOption = inputField.value;
 //   result.innerHTML = "Selected option: " + selectedOption;
 // });
+function calculate() {
+            var total_amount = document.getElementById('total_amount');
+            var dd = document.getElementById('dd');
+            var dc = document.getElementById('dc');
+            var freight = document.getElementById("txtPassportNumber");
+            
+            total_amount.value = total_amount.value.replace(/\\D/, "");
+            dd.value = dd.value.replace(/\\D/, "");
+            dc.value = dc.value.replace(/\\D/, "");
+            freight.value = freight.value.replace(/\\D/, "");
+           
+            total_amount.value = Number(freight.value) * Number(quantity.value * (Number(cgst.value / 100))) + Number(freight.value) * Number(quantity.value) + Number(dd.value) + Number(dc.value) + Number(handling.value) + Number(statistical.value)+ Number(LR_Charges.value);
+            // total_amount.value = Number(freight.value)  + Number(cgst.value * (freight.value / 100)) + Number(dd.value) + Number(dc.value);
+        }
 
 </script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
