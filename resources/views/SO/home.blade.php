@@ -51,14 +51,23 @@
                     </div>
                     <div class="col-md-3">
                       <div class="form-group row">
-                        <label class="required">Company Name</label>
+                        <label class="required">Customer Name</label>
                         <div class="col-sm-9">
-                            <select id="selectbox" name="company_name">
+                            <select id="selectbox" name="customer_name">
                               @foreach($customer as $item)
                                   <option value="{{ $item->customer_name }}">{{ $item->customer_name }}</option>
                               @endforeach
                             </select>
-                          </div>
+                          </div>                          
+                      </div>
+                    </div>
+                    <div class="col-md-3">
+                      <div class="form-group row">                        
+                          <label class="dispatch">SO Number</label>
+                          <div class="col-sm-9">
+                             <input type= "text" class="form-control" value="{{$temp}}" placeholder="SO NUMBER"
+                             name="so_no" />
+                            </div>
                       </div>
                     </div>
                     <div class="col-md-4">
@@ -95,11 +104,7 @@
                       <th class="form-group required" style="width:10%;padding-left:20px">Qty</th>
                       <th class="form-group required" style="width:10%;padding-left:20px">GST</th>
                       <th class="form-group required" style="width:10%;padding-left:20px">Rate</th>
-                      <th class="form-group required" style="width:10%;padding-left:20px">Product Total</th>
-                      {{-- <th class="form-group required" style="width:10%;padding-left:20px">Grand Total</th> --}}
-                      {{-- <th class="form-group required" style="width:10%;padding-left:20px">Cash Receiveid</th> --}}
-                      {{-- <th class="form-group required" style="width:10%;padding-left:20px">Balance</th> --}}
-                      {{-- <th class="form-group required" style="width:10%;padding-left:20px">Total Oustanding</th> --}}
+                      <th class="form-group required" style="width:10%;padding-left:20px">Product Total</th>                     
                     </tr>
                     <div class="row">
                       <datalist id="option_brand">
@@ -392,12 +397,12 @@
             </tr>
           </div>    
                         <div class="row">
-                          <tr>
-                            <th class="form-group required" style="width:10%;padding-left:20px">Grand Total    </th>
-                            <th class="form-group required" style="width:10%;padding-left:20px">Cash Receiveid </th>
-                            <th class="form-group required" style="width:10%;padding-left:20px">Balance        </th>
-                            <th class="form-group required" style="width:15%;padding-left:20px">Total Oustanding</th>
-                          </tr>
+                            <tr>
+                              <th class="form-group required" style="width:10%;padding-left:20px">Grand Total    </th>
+                              <th class="form-group required" style="width:10%;padding-left:20px">Cash Receiveid </th>
+                              <th class="form-group required" style="width:10%;padding-left:20px">Balance        </th>
+                              <th class="form-group required" style="width:15%;padding-left:20px">Total Oustanding</th>
+                            </tr>
                           <div class="row">
                               <tr class="clonetr">
                                 <td style="width:15%;">

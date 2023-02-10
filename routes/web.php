@@ -100,5 +100,6 @@ Route::get('/podelete/{po_no}',[PurchaseOrderController::class,'destroy']);
 
 Route::get('/sales',[SalesorderController::class,'index']);
 Route::post('/addso',[SalesorderController::class,'store']);
-
-
+Route::get('/solist',[SalesorderController::class,'show']);
+Route::get('/soedit{so_no}',[SalesorderController::class,'edit']);
+Route::post('/soupdate/{so_no}',[SalesorderController::class,'update']);

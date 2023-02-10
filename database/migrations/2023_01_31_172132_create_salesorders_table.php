@@ -18,6 +18,7 @@ return new class extends Migration
             $table->date('date');
             $table->string('route');
             $table->string('company_name');
+            $table->bigInteger('so_no')->nullable();
             $table->string('bill_type');
             $table->string('brand_name');
             $table->string('product_name');

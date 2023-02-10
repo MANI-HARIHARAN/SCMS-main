@@ -22,16 +22,14 @@
             @csrf
             <div class="col-lg-12 grid-margin stretch-card">
               <div class="card">
-                <div class="card-body">
-                 
-
+                <div class="card-body">                
                   <!-- <p class="card-description"> Personal info </p> -->
                   <div class="row">
                     <div class="col-md-3">
                       <div class="form-group row">
                         <label class="required">Date</label>
                         <div class="col-sm-9">
-                          <input type="date" class="form-control" value="<?php echo date("Y-m-d") ?>" name="date" >
+                          <input type="date" class="form-control" value="<?php echo date("Y-m-d") ?>" name=" date" >
                         </div>
                       </div>
                     </div>

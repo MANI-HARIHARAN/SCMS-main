@@ -58,7 +58,7 @@
               </a>
               <div class="collapse" id="basic">
                 <ul class="nav flex-column sub-menu">
-                  <li class="nav-item"> <a class="nav-link" href="/sales">Order list</a></li>
+                  <li class="nav-item"> <a class="nav-link" href="/solist">Order list</a></li>
                   <li class="nav-item"> <a class="nav-link" href="/sales">Sales Order</a></li>
                 </ul>
               </div>

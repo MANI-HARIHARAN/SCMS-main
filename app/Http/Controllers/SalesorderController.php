@@ -19,12 +19,22 @@ class SalesorderController extends Controller
      */
     public function index()
     {
+        $value = 1;
+        $temp = $value;
+        // $inc = DB::select("SELECT * FROM 'salesorders' ORDER BY so_no DESC LIMIT 1 ");
+        $inc = DB::select("SELECT * FROM salesorders ORDER BY so_no DESC LIMIT 1");
+
+        if ($inc){
+            $temp1 =$inc[0]->so_no;
+            $temp1 =$temp1+1;
+            $temp =$temp1;
+        }
         $brands = brands::select('name')->get();
         $products = products::select('name')->get();
         $customer = customer::select('customer_name')->get();
         $route = route::select('route_name')->get();
         // $salesorder = salesorder::paginate(10);
-        return view('SO.home', compact('products','brands','customer','route'));
+        return view('SO.home', compact('products','brands','customer','route','temp'));
     }
 
     /**
@@ -48,7 +58,8 @@ class SalesorderController extends Controller
     {
         $date = $request->input('date');
         $route = $request->input('route');
-        $company_name = $request->input('company_name');
+        $customer_name = $request->input('customer_name');
+        $so_no = $request->input('so_no');
         $bill_type = $request->input('bill_type');
     
         $brand_name = $request->input('brand_name');
@@ -125,7 +136,9 @@ class SalesorderController extends Controller
             'date' => $date,
             'route' => $route,
             'bill_type' => $bill_type,
-            'company_name' => $company_name,
+            'customer_name' => $customer_name,
+            'so_no'=>$so_no,
+
 
             //'created_by' => 'Admin',
         );
@@ -133,7 +146,7 @@ class SalesorderController extends Controller
          DB::table('salesorders')->insert($data[$i]);
     }
 
-    return redirect('/sales');
+    return redirect('/solist')->with('useradd', 'SO Added Successfully');
 }   
     /**
      * Display the specified resource.
@@ -141,10 +154,24 @@ class SalesorderController extends Controller
      * @param  \App\Models\salesorder  $salesorder
      * @return \Illuminate\Http\Response
      */
+    // public function show(salesorder $salesorder)
+    // {
+    //     $data=salesorder::paginate(10);
+    //     $group=DB::select('SELECT COUNT(id) as total,customer_name,route_name, FROM salesorders GROUP BY (customer_name,route_name)');
+    //     return view('SO.List',['data'=>$data],['group'=>$group]);
+    // }
     public function show(salesorder $salesorder)
-    {
-        //
-    }
+{
+    $group = DB::table('salesorders')
+        ->select(DB::raw('COUNT(id) as total,so_no, customer_name, route, DATE(date) as date,grand_total,total_outstanding'))
+        ->groupBy(['so_no'])
+        ->get();
+
+    $data = salesorder::paginate(10);
+
+    return view('SO.List', ['data' => $data, 'group' => $group]);
+}
+
 
     /**
      * Show the form for editing the specified resource.
@@ -152,10 +179,34 @@ class SalesorderController extends Controller
      * @param  \App\Models\salesorder  $salesorder
      * @return \Illuminate\Http\Response
      */
-    public function edit(salesorder $salesorder)
-    {
-        //
-    }
+    // public function edit($so_no)    
+    // { 
+    //     $brands = brands::select('*')->get();
+    //     $products = products::select('*')->get();
+    //     $users=salesorder::where('so_no',$so_no)->get();
+    //     $date=DB::select('SELECT date  FROM salesorders WHERE so_no=? GROUP BY so_no', [$so_no]);
+    //     $bill_type=DB::select('SELECT bill_type,so_no FROM salesorders  WHERE so_no=? GROUP BY so_no', [$so_no]);
+    //     $so_no=DB::select('SELECT so_no FROM salesorders  WHERE so_no=? GROUP BY so_no', [$so_no]);
+    //     $route=DB::select('SELECT route,so_no FROM salesorders  WHERE so_no=? GROUP BY so_no', [$so_no]);
+    //     $customer_name=DB::select('SELECT customer_name,so_no FROM salesorders  WHERE so_no=? GROUP BY so_no', [$so_no]);
+    //     $table=salesorder::where('so_no',$so_no)->get();
+    //     //print_r($brands);
+    //     return view('SO.update',compact('brands','products','users','table','date','bill_type','route','so_no','customer_name'));
+    
+    // }
+    public function edit($so_no)
+{
+    $brands = brands::select('name')->get();
+     $products = products::select('name')->get();
+    $salesOrder = salesorder::where('so_no', $so_no)->first();
+    $route = route::select('route_name')->get();
+    $table=salesorder::where('so_no',$so_no)->get();
+    // $customer_name=DB::select('SELECT customer_name,so_no FROM salesorders  WHERE so_no=? GROUP BY so_no', [$so_no]);
+    $customer_name = customer::select('customer_name')->get();
+    
+    return view('SO.update', compact('brands', 'products', 'salesOrder','route','table','customer_name'));
+}
+    
 
     /**
      * Update the specified resource in storage.
@@ -164,9 +215,62 @@ class SalesorderController extends Controller
      * @param  \App\Models\salesorder  $salesorder
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, salesorder $salesorder)
+    public function update(Request $request)
     {
-        //
+        $id = $request->input('so_no');
+        $tableid = $request->input('id');
+        $date = $request->input('date');
+        $route = $request->input('route');
+     
+        $customer_name = $request->input('customer_name');
+        $so_no = $request->input('so_no');
+        $bill_type = $request->input('bill_type');
+    
+        $brand_name = $request->input('brand_name');
+        $product_name = $request->input('product_name');
+        $uom = $request->input('uom');
+        $qty = $request->input('qty');
+        $gst = $request->input('gst');
+        $rate = $request->input('rate');
+        $product_total = $request->input('product_total');
+        $grand_total= $request->input('grand_total');
+        $cash_received = $request->input('cash_received');
+        $balance =$request->input('balance');
+        $total_outstanding = $request->input('total_outstanding');
+
+            
+        $brand_name_array = [];
+        $product_name_array = [];
+        $uom_array = [];
+        $qty_array = [];
+        $gst_array = [];
+        $rate_array = [];
+        $product_total_array = [];
+
+        for ($i = 0;$i < count($brand_name);$i++){
+            $data[$i] = array(
+                'brand_name' => $brand_name[$i],
+            'product_name' => $product_name[$i],
+            'uom' => $uom[$i],
+            'qty' => $qty[$i],
+            'gst' => $gst[$i],
+            'rate' => $rate[$i],
+            'product_total' => $product_total[$i],
+            'grand_total' => $grand_total,
+            'cash_received' => $cash_received,
+            'balance' => $balance,
+            'total_outstanding' => $total_outstanding,
+            'date' => $date,
+            'route' => $route,
+            'bill_type' => $bill_type,
+            'customer_name' => $customer_name,
+            'so_no'=>$so_no,
+            );
+            DB::table('salesorders')->where('so_no',$so_no)->where('id',$tableid[$i])->update($data[$i]); 
+      
+        }         
+        return redirect('/solist')->with('useradd', 'SO Added Successfully');
+
     }
 
     /**

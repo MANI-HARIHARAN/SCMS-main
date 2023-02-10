@@ -11,7 +11,8 @@ class salesorder extends Model
     protected $fillable=[
         'date',
         'route',
-        'company_name',
+        'customer_name',
+        'so_no',
         'bill_type',
         'brand_name',
         'product_name',
