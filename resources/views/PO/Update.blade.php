@@ -129,8 +129,8 @@
                                             @foreach($table as $value)
                                             <tr class="clonetr">
 
-                                                
-                                          
+
+
                                                 <td style="width:15%;">
                                                     <div class="col-sm-12">
                                                         <input type="text" class="form-control" list="option_brand" value="{{ $value->brand_name}}" name="edit_brands[]" id="inputField" required />
