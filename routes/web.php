@@ -7,6 +7,7 @@ use App\Http\Controllers\ProductsController;
 use App\Http\Controllers\PurchaseOrderController;
 use App\Http\Controllers\SalesorderController;
 use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\ReturnToInventoryController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -44,6 +45,9 @@ Route::get('/addpo', function () {
 });
 Route::get('/polist', function () {
     return view('PO.List');
+});
+Route::get('/stock', function () {
+    return view('ReturntoStock.addstock');
 });
 
 // =================================brands==========================================================
@@ -102,3 +106,7 @@ Route::get('/sales',[SalesorderController::class,'index']);
 Route::post('/addso',[SalesorderController::class,'store']);
 
 
+//======================================Stock================================================================
+
+Route::get('/stock',[ReturnToInventoryController::class,'index']);
+Route::post('/add_stock',[ReturnToInventoryController::class,'store']);

@@ -47,10 +47,7 @@
                         <tr class="table-paginate">
                           <th>S.No</th>
                           <th>Brand Name</th>
-                          <th></th>
                           <th> Action </th>
-                          
-                          
                         </tr>
                       </thead>
                       <tbody>
@@ -58,9 +55,9 @@
                         <tr>
                           <td>{{$key+1}}</td>
                           <td>{{$info->name}}</td> 
-                          <td></td>
+                          
                           <td>
-                            <a href="/brands_edit{{$info->id}}" class="mdi mdi-lead-pencil"></a>
+                            <a href="/brands_edit{{$info->id}}" class="mdi mdi-lead-pencil"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                             {{-- <a href="/brands_delete/{{$info->id}}" class="mdi mdi-delete"></a> --}}
                             <a class="mdi mdi-delete" data-href="/brands_delete/{{$info->id}}" data-toggle="modal" data-target="#confirm-delete"></a> 
                           </td> 
@@ -69,7 +66,7 @@
                       </tbody>
                           <tr>
                             <td class="table-paginate" colspan="2">Showing{{$brands->firstItem() }} {{ $brands->lastItem() }} of {{ $brands->total() }}</td>
-                            <td class="table-paginate" colspan="2">{{ $brands->links() }}</td> 
+                            <td class="table-paginate" colspan="1">{{ $brands->links() }}</td> 
                           </tr>
                     </table>                   
                   </div>
@@ -96,9 +93,10 @@
 </div>
 <!-- delete model popup end -->
 <!-- body content end -->          
-          @include('layouts.footer')
+         
         
     </div>
+    @include('layouts.footer')
       </div>
     </div>
   </body>

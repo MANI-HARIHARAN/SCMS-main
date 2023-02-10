@@ -42,8 +42,9 @@
                 </div>
             </div>   
             <!-- body content end -->          
-          @include('layouts.footer')
+          
         </div>
+        @include('layouts.footer')
       </div>
     </div>
   </body>

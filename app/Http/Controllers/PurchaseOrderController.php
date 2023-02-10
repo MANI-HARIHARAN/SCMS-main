@@ -124,7 +124,23 @@ class PurchaseOrderController extends Controller
             );
            
            // print_r($data[$i]);
+          
            DB::table('purchase_orders')->insert($data[$i]);
+        }
+
+        for ($k = 0;$k < count($PRODUCT_array);$k++){
+            $data[$k] = array(
+            'brand_name' => $brands[$k],
+            'product_name' => $products[$k],    
+            'qty' => $qty[$k],
+            'mrp' => $mrp[$k], 
+            );
+
+            if($brands[$k])
+           
+           // print_r($data[$i]);
+           DB::table('stocks')->insert($data[$k]);
+           
         }
         //print_r($brands) ; 
      //echo "insert sucessfully";
@@ -141,7 +157,7 @@ class PurchaseOrderController extends Controller
     public function show(purchaseOrder $purchaseOrder)
     {
         $data=purchaseOrder::paginate(10);
-        $group=DB::select('SELECT COUNT(id) as total,po_no FROM purchase_orders GROUP BY po_no');
+        $group=DB::select('SELECT COUNT(id) as total,po_no,company_name,po_date,bill_type,date FROM purchase_orders GROUP BY po_no');
         return view('PO.List',['data'=>$data],['group'=>$group]);
     }
 

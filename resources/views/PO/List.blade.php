@@ -11,7 +11,7 @@
           <div class="page-header">
               <h3 class="page-title">
                   <span class="page-title-icon bg-gradient-primary text-white me-2">
-                  <i class="mdi mdi-routes"></i>
+                  <i class="mdi mdi-briefcase-download"></i>
                   </span> PO List
               </h3>
               <div style="float:right">
@@ -43,15 +43,16 @@
                 <div class="card-body">
                   <h4 class="card-title">PO Table</h4>
                   </p>
+                  
                   <table class="table table-striped table-bordered">
+                  @isset($data)
                     <thead>
                       <tr class="table-paginate">
                         <th> S.No</th>
-                        <!-- <th> Bill Date</th>
-                        <th> PO Number</th>
+                        <th> Bill Date</th>
                         <th> Bill Type</th>
-                        <th> PO Date</th> -->
-                        
+                        <th> Company Name</th>
+                        <th> PO Date</th>
                         <th> Bill Count</th>
                         <th> PO Number</th>
                         <th> Action </th>
@@ -61,15 +62,24 @@
                     @foreach($group as $key=>$value)
                       <tr>
                         <td>{{$key+1}}</td>
+                        <td>{{$value->date}}</td>
+                        <td>{{$value->bill_type}}</td>
+                        <td>{{$value->company_name}}</td>
+                        <td>{{$value->po_date}}</td>
                         <td>{{$value->total}}</td>
                         <td>{{$value->po_no}}</td>
-                        
                         <td>
                           <a href="/poupdate{{$value->po_no}}" class="mdi mdi-lead-pencil"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                           <a class="mdi mdi-delete" data-href="/podelete/{{$value->po_no}}"  data-toggle="modal" data-target="#confirm-delete"></a>
                         </td>      
                       </tr>
+                      
                     @endforeach
+                      <tr>
+                        <td class="table-paginate"  colspan="4">Showing{{$data->firstItem() }} {{ $data->lastItem() }} of {{ $data->total() }}</td>
+                        <td class="table-paginate"  colspan="4">{{ $data->links() }}</td>
+                      </tr>
+                      @endif
                     </tbody>
                   </table>
                 </div>

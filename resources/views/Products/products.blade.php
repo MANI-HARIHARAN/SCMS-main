@@ -59,7 +59,7 @@
                         <td>{{$info->name}}</td> 
                         <td>{{$info->brands}}</td>
                         <td>
-                          <a href="/products_edit{{$info->id}}" class="mdi mdi-lead-pencil"></a>
+                          <a href="/products_edit{{$info->id}}" class="mdi mdi-lead-pencil"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                           <a class="mdi mdi-delete" data-href="/products_delete/{{$info->id}}" data-toggle="modal" data-target="#confirm-delete"></a>
                         </td> 
                       </tr>
