@@ -18,9 +18,19 @@ class PurchaseOrderController extends Controller
      */
     public function index()
     {
+        // $value = 1;
+        // $temp = $value;
+        // $inc = DB::select("SELECT * FROM `purchase_orders` ORDER BY po_no DESC LIMIT 1");
+        // if ($inc) {
+        //    $temp1 = $inc[0]->po_no;
+        //     $temp1 = $temp1+1;
+        //    $temp =  $temp1;
+        // }
+
         $brands = brands::select('name')->get();
         $products = products::select('name')->get();
-        return view('PO.add',['brands'=>$brands],['products'=>$products]);
+        return view('PO.add',compact('brands','products'));
+        //return view('PO.add',compact('brands','products','temp'));
     }
 
     /**
@@ -168,26 +178,6 @@ class PurchaseOrderController extends Controller
     {
         $id = $request->input('po_no');
         $tableid = $request->input('id');
-      //  $table=purchaseOrder::where('id',$id)->get();
-        print_r($tableid);
-        // purchaseOrder::where('id', $id)
-        //  ->update(
-        //     [
-        //         'date'=>$request->input('edit_date'),
-        //         'bill_type'=>$request->input('edit_bill_type'),
-        //         'po_no'=>$request->input('edit_po_number'),
-        //         'company_name'=> ucwords($request->input('edit_company_name')),
-        //         'po_date'=>$request->input('edit_po_date'),
-        //         'brand_name'=> $request->input('edit_brands'),
-        //         'product_name'=> $request->input('edit_products'),
-        //         'uom'=> $request->input('edit_po_uom'),
-        //         'qty'=> $request->input('edit_po_qty'),
-        //         'gst'=> $request->input('edit_po_gst'),
-        //         'mrp'=> $request->input('edit_po_mrp'),
-        //         'wrate'=> $request->input('edit_po_wrate'),
-        //         'rrate'=> $request->input('edit_po_rrate'),
-        //         'orate'=> $request->input('edit_po_orate'),
-        //     ]);
         $date = $request->input('edit_date');
         $bill_type = $request->input('edit_bill_type');
         $po_no = $request->input('edit_po_number');
@@ -204,39 +194,7 @@ class PurchaseOrderController extends Controller
         $rrate = $request->input('edit_po_rrate');
         $orate = $request->input('edit_po_orate');
 
-    $BRAND_array = [];
-    $PRODUCT_array = [];
-    $UOM_array = [];
-    $QTY_array = [];
-    $MRP_array = [];
-    $GST_array = [];
-    $RRATE_array = [];
-    $WRATE_array = [];
-    $ORATE_array = [];
-
-    // for($j=0;$j<count($brands);$j++)
-    // {
-    //     if(isset($brands[$j]))
-    //         array_push($BRAND_array,$brands[$j]);
-    //     if(isset($products[$j]))
-    //         array_push($PRODUCT_array,$products[$j]);
-    //     if(isset($uom[$j]))
-    //         array_push($UOM_array,$uom[$j]);
-    //     if(isset($qty[$j]))
-    //         array_push($QTY_array,$qty[$j]);
-    //     if(isset($mrp[$j]))
-    //         array_push($MRP_array,$mrp[$j]);
-    //     if(isset($gst[$j]))
-    //         array_push($GST_array,$gst[$j]);
-    //     if(isset($wrate[$j]))
-    //         array_push($RRATE_array,$wrate[$j]);
-    //     if(isset($rrate[$j]))
-    //         array_push($WRATE_array,$rrate[$j]);
-    //     if(isset($orate[$j]))
-    //         array_push($ORATE_array,$orate[$j]);
-    // }
-
-    for ($i = 0;$i < count($tableid);$i++){
+    for ($i = 0;$i < count($brands);$i++){
         $data[$i] = array(
         'brand_name' =>$brands[$i],
         'product_name' =>$products[$i],
@@ -259,11 +217,9 @@ class PurchaseOrderController extends Controller
         'created_by' => "admin"
         
         );
-        DB::table('purchase_orders')->update($data[$i]); 
-       //  print_r($data[$i]);
-        
-    }
-                
+        DB::table('purchase_orders')->where('po_no',$po_no)->where('id',$tableid[$i])->update($data[$i]); 
+      
+    }         
         return redirect('/polist')->with('userupdate', 'Updated successfully');
     }
 

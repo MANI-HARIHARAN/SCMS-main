@@ -52,7 +52,7 @@
                       <div class="form-group row">
                         <label class="required">PO number</label>
                         <div class="col-sm-8">
-                          <input type="text" class="form-control" placeholder="PO number" name="po_number" required />
+                          <input type="text" class="form-control"  placeholder="PO number" name="po_number" required />
                         </div>
                       </div>
                     </div>
@@ -66,6 +66,7 @@
                     </div>
                    
                   </div>
+                  
                   <div class="row">
                     
                      <div class="col-md-4">
@@ -853,6 +854,5 @@ function calculate() {
             total_amount.value = Number(freight.value) * Number(quantity.value * (Number(cgst.value / 100))) + Number(freight.value) * Number(quantity.value) + Number(dd.value) + Number(dc.value) + Number(handling.value) + Number(statistical.value)+ Number(LR_Charges.value);
             // total_amount.value = Number(freight.value)  + Number(cgst.value * (freight.value / 100)) + Number(dd.value) + Number(dc.value);
         }
-
 </script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
