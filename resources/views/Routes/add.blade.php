@@ -11,15 +11,15 @@
             <div class="page-header">
               <h3 class="page-title">
                 <span class="page-title-icon bg-gradient-primary text-white me-2">
-                  <i class="mdi mdi-account-plus"></i>
-                </span> Add User
+                  <i class="mdi mdi-routes"></i>
+                </span> Add Route
               </h3>
             </div>
             <!-- body content start -->
             <div class="col-lg-12 grid-margin stretch-card">
                 <div class="card">
                     <div class="card-body">
-                        <h4 class="card-title">Create User</h4>
+                        <!-- <h4 class="card-title">Create Route</h4> -->
                         <form class="form-sample" method="POST" action="routelist" enctype="multipart/form-data">
                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
                             @csrf
@@ -44,8 +44,8 @@
                 </div>
             </div>
             <!-- body content end -->          
-          @include('layouts.footer')
         </div>
+        @include('layouts.footer')
       </div>
     </div>
   </body>

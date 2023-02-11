@@ -41,7 +41,7 @@
               <a class="nav-link" data-bs-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
                 <span class="menu-title">Order Management</span>
                 <i class="menu-arrow"></i>
-                <i class="mdi mdi-crosshairs-gps menu-icon"></i>
+                <i class="mdi mdi-store menu-icon"></i>
               </a>
               <div class="collapse" id="ui-basic">
                 <ul class="nav flex-column sub-menu">
@@ -60,6 +60,20 @@
                 <ul class="nav flex-column sub-menu">
                   <li class="nav-item"> <a class="nav-link" href="/sales">Order list</a></li>
                   <li class="nav-item"> <a class="nav-link" href="/sales">Sales Order</a></li>
+                </ul>
+              </div>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" data-bs-toggle="collapse" href="#ui-basic1" aria-expanded="false" aria-controls="ui-basic">
+                <span class="menu-title">Inventory</span>
+                <i class="menu-arrow"></i>
+                <i class="mdi mdi-store menu-icon"></i>
+              </a>
+              <div class="collapse" id="ui-basic1">
+                <ul class="nav flex-column sub-menu">
+                  <li class="nav-item"> <a class="nav-link" href="/stocklist">Stock</a></li>
+                  <li class="nav-item"> <a class="nav-link" href="/stock"> Return to Inventory</a></li>
+                  <!-- <li class="nav-item"> <a class="nav-link" href="/">Bad Inventroy</a></li> -->
                 </ul>
               </div>
             </li>

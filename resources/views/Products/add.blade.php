@@ -36,7 +36,7 @@
                           <div class="form-group row">
                               <label class="col-sm-3 col-form-label required">Brand Names</label>
                               <div class="col-sm-9">
-                                <select id="selectbox" name="brands">
+                                <select class="form-select" id="selectbox" name="brands">
                                   @foreach($products as $item)
                                       <option value="{{ $item->name }}">{{ $item->name }}</option>
                                   @endforeach
@@ -54,8 +54,8 @@
                 </div>
             </div>   
             <!-- body content end -->          
-          @include('layouts.footer')
         </div>
+        @include('layouts.footer')
       </div>
     </div>
   </body>

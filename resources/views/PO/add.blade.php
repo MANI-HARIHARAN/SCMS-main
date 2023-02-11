@@ -12,7 +12,7 @@
           <div class="page-header">
             <h3 class="page-title">
               <span class="page-title-icon bg-gradient-primary text-white me-2">
-                <i class="mdi mdi-account-plus"></i>
+                <i class="mdi mdi-playlist-plus"></i>
               </span> Purchase Order
             </h3>
           </div>
@@ -30,7 +30,7 @@
                     <div class="col-md-3">
                       <div class="form-group row">
                         <label class="required">Date</label>
-                        <div class="col-sm-9">
+                        <div class="col-sm-11">
                           <input type="date" class="form-control" value="<?php echo date("Y-m-d") ?>" name="date" >
                         </div>
                       </div>
@@ -38,7 +38,7 @@
                     <div class="col-md-3">
                       <div class="form-group row">
                         <label class="required">Bill Type</label>
-                        <div class="col-sm-8">
+                        <div class="col-sm-12">
                           <select class="form-select" name="bill_type" >
                             <option disabled>select</option>
                             <option value="Paid">Paid</option>
@@ -50,25 +50,23 @@
                     </div>
                     <div class="col-md-3">
                       <div class="form-group row">
-                        <label class="required">PO number</label>
-                        <div class="col-sm-8">
-                          <input type="text" class="form-control"  placeholder="PO number" name="po_number" required />
+                        <label class="required">PO Number</label>
+                        <div class="col-sm-12">
+                          <input type="text" class="form-control"  placeholder="PO Number" name="po_number" required />
                         </div>
                       </div>
                     </div>
                     <div class="col-md-3">
                       <div class="form-group row">
                         <label class="required">PO Date</label>
-                        <div class="col-sm-9">
+                        <div class="col-sm-12">
                           <input type="date" class="form-control" name="po_date"  />
                         </div>
                       </div>
                     </div>
-                   
                   </div>
                   
                   <div class="row">
-                    
                      <div class="col-md-4">
                       <div class="form-group row">
                         <label class="required">Company Name</label>
@@ -93,15 +91,15 @@
                   </div> -->
                   <div class="row">
                     <tr>
-                      <th class="required" style="width:15%;padding-left:25px">Brands</th>
-                      <th class="form-group required" style="width:15%;padding-left:25px">Products</th>
-                      <th class="form-group required" style="width:10%;padding-left:20px">UOM</th>
-                      <th class="form-group required" style="width:10%;padding-left:20px">qty</th>
-                      <th class="form-group required" style="width:10%;padding-left:20px">gst</th>
-                      <th class="form-group required" style="width:10%;padding-left:20px">mrp</th>
-                      <th class="form-group required" style="width:10%;padding-left:20px">Wrate</th>
-                      <th class="form-group required" style="width:10%;padding-left:20px">Rrate</th>
-                      <th class="form-group required" style="width:10%;padding-left:20px">Orate</th>
+                      <th class="required" style="width:15%;padding-top:15px;padding-left:25px">Brands</th>
+                      <th class="form-group required" style="width:15%;padding-top:15px;padding-left:25px">Products</th>
+                      <th class="form-group required" style="width:10%;padding-top:15px;padding-left:20px">UOM</th>
+                      <th class="form-group required" style="width:10%;padding-top:15px;padding-left:20px">Qty</th>
+                      <th class="form-group required" style="width:10%;padding-top:15px;padding-left:20px">GST</th>
+                      <th class="form-group required" style="width:10%;padding-top:15px;padding-left:20px">MRP</th>
+                      <th class="form-group required" style="width:10%;padding-top:15px;padding-left:20px">W-Rate</th>
+                      <th class="form-group required" style="width:10%;padding-top:15px;padding-left:20px">R-Rate</th>
+                      <th class="form-group required" style="width:10%;padding-top:15px;padding-left:20px">O-Rate</th>
                     </tr>
                     <div class="row">
 
@@ -800,18 +798,16 @@
                 </table>
 
                 <div class="row" style="justify-content:center">
-                  <button style="width:10%;margin-top:20px;margin-bottom:15px" type="submit" class="btn-info btn-sm btn-icon-text">
+                  <button style="width:10%;margin-top:20px;margin-bottom:15px" type="submit" class="btn-gradient-primary btn-sm btn-icon-text">
                     Submit
                   </button>
                 </div>
               </div>
             </div>
           </form>
-
-
           <!-- body content end -->
-          @include('layouts.footer')
         </div>
+        @include('layouts.footer')
       </div>
     </div>
 </body>
