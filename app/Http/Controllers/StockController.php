@@ -46,7 +46,8 @@ class StockController extends Controller
      */
     public function show(stock $stock)
     {
-        //
+        $data=stock::paginate(100);
+        return view('Stock.stocklist',['data'=>$data]);
     }
 
     /**

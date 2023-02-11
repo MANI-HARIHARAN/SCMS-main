@@ -71,8 +71,9 @@
               </a>
               <div class="collapse" id="ui-basic1">
                 <ul class="nav flex-column sub-menu">
-                  <li class="nav-item"> <a class="nav-link" href="/stock">Inventory</a></li>
-                  <li class="nav-item"> <a class="nav-link" href="/">Bad Inventroy</a></li>
+                  <li class="nav-item"> <a class="nav-link" href="/stocklist">Stock</a></li>
+                  <li class="nav-item"> <a class="nav-link" href="/stock"> Return to Inventory</a></li>
+                  <!-- <li class="nav-item"> <a class="nav-link" href="/">Bad Inventroy</a></li> -->
                 </ul>
               </div>
             </li>
