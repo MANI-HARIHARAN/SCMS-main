@@ -11,7 +11,7 @@
             <div class="page-header">
               <h3 class="page-title">
                 <span class="page-title-icon bg-gradient-primary text-white me-2">
-                  <i class="mdi mdi-account-plus"></i>
+                  <i class="mdi mdi-routes"></i>
                 </span> Update Route
               </h3>
             </div>
@@ -19,7 +19,7 @@
             <div class="col-lg-12 grid-margin stretch-card">
                 <div class="card">
                     <div class="card-body">
-                        <h4 class="card-title">Update Route</h4>
+                        <!-- <h4 class="card-title">Update Route</h4> -->
                         @foreach($users as $user)
                         <form class="form-sample" method="POST" action="routeupdate" >
                         @csrf
@@ -44,9 +44,9 @@
                     </div>
                 </div>
             </div>   
-            <!-- body content end -->          
-          @include('layouts.footer')
+            <!-- body content end -->            
         </div>
+        @include('layouts.footer')
       </div>
     </div>
   </body>
