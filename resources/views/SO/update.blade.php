@@ -96,11 +96,9 @@
                         <label class="required">Route</label>
                         <div class="col-sm-9">
                             <select id="selectbox" name="route">
-                                @foreach($route as $item) 
-                                <option value="{{ old('route', $item->route) }}">
-                                    {{ $item->route_name }}
-                                </option>
-                                @endforeach
+                              @foreach($route as $item)
+                              <option value="{{ $item->route_name}}">{{ $item->route_name}}</option>
+                          @endforeach
                             </select>
                           </div>
                       </div>
@@ -247,7 +245,7 @@
 
     });
   });
-  $('input[name^="product_total"]').val(0);
+  // $('input[name^="product_total"]').val(0);
   $('input[name^="qty"],input[name^="rate"]').on('input', function() {
    let $tr = $(this).closest('tr');
    let qty = parseFloat($tr.find('input[name^="qty"]').val());
@@ -271,7 +269,7 @@
 });
 $('input[name^="total_outstandingl"]').val(0);
 $(document).ready(function(){
-  $('#total_outstanding').val(0);
+  // $('#total_outstanding').val(0);
   $('#cash_received').on('input', function() {
     let grand_total = parseFloat($('#grand_total').val());
     let cash_received = parseFloat($(this).val());

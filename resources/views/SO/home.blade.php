@@ -65,7 +65,7 @@
                       <div class="form-group row">                        
                           <label class="dispatch">SO Number</label>
                           <div class="col-sm-9">
-                             <input type= "text" class="form-control" value="{{$temp}}" placeholder="SO NUMBER"
+                             <input type= "text" class="form-control" readonly="readonly" value="{{$temp}}" placeholder="SO NUMBER"
                              name="so_no" />
                             </div>
                       </div>

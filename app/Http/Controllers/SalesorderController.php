@@ -154,13 +154,8 @@ class SalesorderController extends Controller
      * @param  \App\Models\salesorder  $salesorder
      * @return \Illuminate\Http\Response
      */
-    // public function show(salesorder $salesorder)
-    // {
-    //     $data=salesorder::paginate(10);
-    //     $group=DB::select('SELECT COUNT(id) as total,customer_name,route_name, FROM salesorders GROUP BY (customer_name,route_name)');
-    //     return view('SO.List',['data'=>$data],['group'=>$group]);
-    // }
-    public function show(salesorder $salesorder)
+    
+     public function show(salesorder $salesorder)
 {
     $group = DB::table('salesorders')
         ->select(DB::raw('COUNT(id) as total,so_no, customer_name, route, DATE(date) as date,grand_total,total_outstanding'))
@@ -179,27 +174,14 @@ class SalesorderController extends Controller
      * @param  \App\Models\salesorder  $salesorder
      * @return \Illuminate\Http\Response
      */
-    // public function edit($so_no)    
-    // { 
-    //     $brands = brands::select('*')->get();
-    //     $products = products::select('*')->get();
-    //     $users=salesorder::where('so_no',$so_no)->get();
-    //     $date=DB::select('SELECT date  FROM salesorders WHERE so_no=? GROUP BY so_no', [$so_no]);
-    //     $bill_type=DB::select('SELECT bill_type,so_no FROM salesorders  WHERE so_no=? GROUP BY so_no', [$so_no]);
-    //     $so_no=DB::select('SELECT so_no FROM salesorders  WHERE so_no=? GROUP BY so_no', [$so_no]);
-    //     $route=DB::select('SELECT route,so_no FROM salesorders  WHERE so_no=? GROUP BY so_no', [$so_no]);
-    //     $customer_name=DB::select('SELECT customer_name,so_no FROM salesorders  WHERE so_no=? GROUP BY so_no', [$so_no]);
-    //     $table=salesorder::where('so_no',$so_no)->get();
-    //     //print_r($brands);
-    //     return view('SO.update',compact('brands','products','users','table','date','bill_type','route','so_no','customer_name'));
-    
-    // }
+   
     public function edit($so_no)
 {
     $brands = brands::select('name')->get();
-     $products = products::select('name')->get();
+    $products = products::select('name')->get();
     $salesOrder = salesorder::where('so_no', $so_no)->first();
-    $route = route::select('route_name')->get();
+    $route = route::all();
+    // $route = route::select('route_name')->get();
     $table=salesorder::where('so_no',$so_no)->get();
     // $customer_name=DB::select('SELECT customer_name,so_no FROM salesorders  WHERE so_no=? GROUP BY so_no', [$so_no]);
     $customer_name = customer::select('customer_name')->get();
@@ -247,28 +229,54 @@ class SalesorderController extends Controller
         $rate_array = [];
         $product_total_array = [];
 
-        for ($i = 0;$i < count($brand_name);$i++){
-            $data[$i] = array(
-                'brand_name' => $brand_name[$i],
-            'product_name' => $product_name[$i],
-            'uom' => $uom[$i],
-            'qty' => $qty[$i],
-            'gst' => $gst[$i],
-            'rate' => $rate[$i],
-            'product_total' => $product_total[$i],
-            'grand_total' => $grand_total,
-            'cash_received' => $cash_received,
-            'balance' => $balance,
-            'total_outstanding' => $total_outstanding,
-            'date' => $date,
-            'route' => $route,
-            'bill_type' => $bill_type,
-            'customer_name' => $customer_name,
-            'so_no'=>$so_no,
-            );
-            DB::table('salesorders')->where('so_no',$so_no)->where('id',$tableid[$i])->update($data[$i]); 
+        // for ($i = 0;$i < count($brand_name);$i++){
+        //     $data[$i] = array(
+        //         'brand_name' => $brand_name[$i],
+        //     'product_name' => $product_name[$i],
+        //     'uom' => $uom[$i],
+        //     'qty' => $qty[$i],
+        //     'gst' => $gst[$i],
+        //     'rate' => $rate[$i],
+        //     'product_total' => $product_total[$i],
+        //     'grand_total' => $grand_total,
+        //     'cash_received' => $cash_received,
+        //     'balance' => $balance,
+        //     'total_outstanding' => $total_outstanding,
+        //     'date' => $date,
+        //     'route' => $route,
+        //     'bill_type' => $bill_type,
+        //     'customer_name' => $customer_name,
+        //     'so_no'=>$so_no,
+        //     );
+        //     DB::table('salesorders')->where('so_no',$so_no)->where('id',$tableid[$i])->update($data[$i]); 
       
-        }         
+        // }    
+        for ($i = 0;$i < count($brand_name);$i++){
+            
+                $data[$i] = array(
+
+                    'brand_name' => $brand_name[$i],
+                    'product_name' => $product_name[$i],
+                    'uom' => $uom[$i],
+                    'qty' => $qty[$i],
+                    'gst' => $gst[$i],
+                    'rate' => $rate[$i],
+                    'product_total' => $product_total[$i],
+                    'grand_total' => $grand_total,
+                    'cash_received' => $cash_received,
+                    'balance' => $balance,
+                    'total_outstanding' => $total_outstanding,
+                    'date' => $date,
+                    'route' => $route,
+                    'bill_type' => $bill_type,
+                    'customer_name' => $customer_name,
+                    'so_no'=>$so_no,
+                    
+                );
+
+            DB::table('salesorders')->where('so_no',$so_no)->update($data[$i]); 
+        }
+             
         return redirect('/solist')->with('useradd', 'SO Added Successfully');
 
     }

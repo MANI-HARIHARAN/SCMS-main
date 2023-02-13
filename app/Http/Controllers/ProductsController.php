@@ -78,11 +78,6 @@ class ProductsController extends Controller
     $brands = brands::all();
     return view('Products.edit', compact('products','brands'));
   
-// $options = DB::table('your_table_name')->select('id','column_name')->get(); 
-
-
-
-
 }
 
     /**
