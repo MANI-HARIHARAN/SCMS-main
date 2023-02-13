@@ -219,7 +219,6 @@ class SalesorderController extends Controller
         $cash_received = $request->input('cash_received');
         $balance =$request->input('balance');
         $total_outstanding = $request->input('total_outstanding');
-
             
         $brand_name_array = [];
         $product_name_array = [];
@@ -229,28 +228,7 @@ class SalesorderController extends Controller
         $rate_array = [];
         $product_total_array = [];
 
-        // for ($i = 0;$i < count($brand_name);$i++){
-        //     $data[$i] = array(
-        //         'brand_name' => $brand_name[$i],
-        //     'product_name' => $product_name[$i],
-        //     'uom' => $uom[$i],
-        //     'qty' => $qty[$i],
-        //     'gst' => $gst[$i],
-        //     'rate' => $rate[$i],
-        //     'product_total' => $product_total[$i],
-        //     'grand_total' => $grand_total,
-        //     'cash_received' => $cash_received,
-        //     'balance' => $balance,
-        //     'total_outstanding' => $total_outstanding,
-        //     'date' => $date,
-        //     'route' => $route,
-        //     'bill_type' => $bill_type,
-        //     'customer_name' => $customer_name,
-        //     'so_no'=>$so_no,
-        //     );
-        //     DB::table('salesorders')->where('so_no',$so_no)->where('id',$tableid[$i])->update($data[$i]); 
-      
-        // }    
+           
         for ($i = 0;$i < count($brand_name);$i++){
             
                 $data[$i] = array(
