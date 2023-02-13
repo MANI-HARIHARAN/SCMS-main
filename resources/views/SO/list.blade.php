@@ -70,7 +70,7 @@
                         <td>{{$value->total}}</td>                                  
                         <td>
                           <a href="/soedit{{$value->so_no}}" class="mdi mdi-lead-pencil"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                          <a class="mdi mdi-delete" data-href="/podelete/{{$value->so_no}}"  data-toggle="modal" data-target="#confirm-delete"></a>
+                          <a class="mdi mdi-delete" data-href="/sodelete/{{$value->so_no}}"  data-toggle="modal" data-target="#confirm-delete"></a>
                         </td>      
                       </tr>
                     @endforeach

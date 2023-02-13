@@ -111,6 +111,7 @@ Route::post('/addso',[SalesorderController::class,'store']);
 Route::get('/solist',[SalesorderController::class,'show']);
 Route::get('/soedit{so_no}',[SalesorderController::class,'edit']);
 Route::post('/soupdate/{so_no}',[SalesorderController::class,'update']);
+Route::get('/sodelete/{so_no}',[SalesorderController::class,'destroy']);
 //======================================Inventory================================================================
 
 Route::get('/stock',[ReturnToInventoryController::class,'index']);

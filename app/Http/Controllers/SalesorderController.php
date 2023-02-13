@@ -287,8 +287,11 @@ class SalesorderController extends Controller
      * @param  \App\Models\salesorder  $salesorder
      * @return \Illuminate\Http\Response
      */
-    public function destroy(salesorder $salesorder)
+    public function destroy($so_no)
     {
-        //
+    
+         salesorder::where('so_no', $so_no)->delete();
+        return redirect('/solist')->with('orgdelete', 'Delete successfully');
+       
     }
 }
