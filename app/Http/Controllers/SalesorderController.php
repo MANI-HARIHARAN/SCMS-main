@@ -58,7 +58,7 @@ class SalesorderController extends Controller
     {
         $date = $request->input('date');
         $route = $request->input('route');
-        $customer_name = $request->input('customer_name');
+        $company_name = $request->input('customer_name');
         $so_no = $request->input('so_no');
         $bill_type = $request->input('bill_type');
     
@@ -136,7 +136,7 @@ class SalesorderController extends Controller
             'date' => $date,
             'route' => $route,
             'bill_type' => $bill_type,
-            'customer_name' => $customer_name,
+            'customer_name' => $company_name,
             'so_no'=>$so_no,
 
 
@@ -184,7 +184,7 @@ class SalesorderController extends Controller
     // $route = route::select('route_name')->get();
     $table=salesorder::where('so_no',$so_no)->get();
     // $customer_name=DB::select('SELECT customer_name,so_no FROM salesorders  WHERE so_no=? GROUP BY so_no', [$so_no]);
-    $customer_name = customer::select('customer_name')->get();
+    $company_name = customer::select('customer_name')->get();
     
     return view('SO.update', compact('brands', 'products', 'salesOrder','route','table','customer_name'));
 }
@@ -204,7 +204,7 @@ class SalesorderController extends Controller
         $date = $request->input('date');
         $route = $request->input('route');
      
-        $customer_name = $request->input('customer_name');
+        $company_name = $request->input('customer_name');
         $so_no = $request->input('so_no');
         $bill_type = $request->input('bill_type');
     
@@ -247,7 +247,7 @@ class SalesorderController extends Controller
                     'date' => $date,
                     'route' => $route,
                     'bill_type' => $bill_type,
-                    'customer_name' => $customer_name,
+                    'customer_name' => $company_name,
                     'so_no'=>$so_no,
                     
                 );

@@ -66,7 +66,7 @@
                       @endforeach
                     </tbody>
                         <tr>
-                          <td class="table-paginate" colspan="3">Showing{{$products->firstItem() }} {{ $products->lastItem() }} of {{ $products->total() }}</td>
+                          <td class="table-paginate" colspan="3">Showing{{$products->firstItem() }}to {{ $products->lastItem() }} of {{ $products->total() }}</td>
                           <td class="table-paginate" colspan="3">{{ $products->links() }}</td> 
                         </tr>
                     </table>
